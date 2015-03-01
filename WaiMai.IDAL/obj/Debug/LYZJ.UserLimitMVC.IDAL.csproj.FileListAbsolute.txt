@@ -1,0 +1,17 @@
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\bin\Debug\LYZJ.UserLimitMVC.IDAL.dll
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\bin\Debug\LYZJ.UserLimitMVC.IDAL.pdb
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\bin\Debug\LYZJ.UserLimitMVC.Model.dll
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\bin\Debug\EntityFramework.dll
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\bin\Debug\LYZJ.UserLimitMVC.Model.pdb
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\bin\Debug\EntityFramework.xml
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\Lib\LYZJ.UserLimitMVC.IDAL.dll
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\Lib\LYZJ.UserLimitMVC.IDAL.pdb
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\obj\Debug\LYZJ.UserLimitMVC.IDAL.csprojResolveAssemblyReference.cache
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\obj\Debug\LYZJ.UserLimitMVC.IDAL.dll
+F:\workArticle\MVC博客\权限系列\LYZJLimitMVC\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\obj\Debug\LYZJ.UserLimitMVC.IDAL.pdb
+E:\Study\C#\LYZJ.UserLimitMVC\Lib\LYZJ.UserLimitMVC.IDAL.dll
+E:\Study\C#\LYZJ.UserLimitMVC\Lib\LYZJ.UserLimitMVC.IDAL.pdb
+E:\Study\C#\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\obj\Debug\LYZJ.UserLimitMVC.IDAL.csprojResolveAssemblyReference.cache
+E:\Study\C#\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\obj\Debug\LYZJ.UserLimitMVC.IDAL.dll
+E:\Study\C#\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\obj\Debug\LYZJ.UserLimitMVC.IDAL.pdb

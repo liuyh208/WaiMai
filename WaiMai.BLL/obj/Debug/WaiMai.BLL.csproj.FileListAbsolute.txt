@@ -1,0 +1,11 @@
+E:\Study\C#\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.BLL\obj\Debug\WaiMai.BLL.csprojResolveAssemblyReference.cache
+E:\Study\C#\WaiMai\WaiMai.BLL\obj\Debug\WaiMai.BLL.csprojResolveAssemblyReference.cache
+E:\Study\C#\WaiMai\Lib\WaiMai.BLL.dll
+E:\Study\C#\WaiMai\Lib\WaiMai.BLL.pdb
+E:\Study\C#\WaiMai\WaiMai.BLL\obj\Debug\WaiMai.BLL.dll
+E:\Study\C#\WaiMai\WaiMai.BLL\obj\Debug\WaiMai.BLL.pdb
+E:\个人\快餐\Code\WaiMai\Lib\WaiMai.BLL.dll
+E:\个人\快餐\Code\WaiMai\Lib\WaiMai.BLL.pdb
+E:\个人\快餐\Code\WaiMai\WaiMai.BLL\obj\Debug\WaiMai.BLL.csprojResolveAssemblyReference.cache
+E:\个人\快餐\Code\WaiMai\WaiMai.BLL\obj\Debug\WaiMai.BLL.dll
+E:\个人\快餐\Code\WaiMai\WaiMai.BLL\obj\Debug\WaiMai.BLL.pdb

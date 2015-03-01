@@ -1,0 +1,15 @@
+E:\Study\C#\LYZJ.UserLimitMVC\Lib\WaiMai.IDAL.dll
+E:\Study\C#\LYZJ.UserLimitMVC\Lib\WaiMai.IDAL.pdb
+E:\Study\C#\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\obj\Debug\WaiMai.IDAL.csprojResolveAssemblyReference.cache
+E:\Study\C#\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\obj\Debug\WaiMai.IDAL.dll
+E:\Study\C#\LYZJ.UserLimitMVC\LYZJ.UserLimitMVC.IDAL\obj\Debug\WaiMai.IDAL.pdb
+E:\Study\C#\WaiMai\Lib\WaiMai.IDAL.dll
+E:\Study\C#\WaiMai\Lib\WaiMai.IDAL.pdb
+E:\Study\C#\WaiMai\WaiMai.IDAL\obj\Debug\WaiMai.IDAL.csprojResolveAssemblyReference.cache
+E:\Study\C#\WaiMai\WaiMai.IDAL\obj\Debug\WaiMai.IDAL.dll
+E:\Study\C#\WaiMai\WaiMai.IDAL\obj\Debug\WaiMai.IDAL.pdb
+E:\个人\快餐\Code\WaiMai\Lib\WaiMai.IDAL.dll
+E:\个人\快餐\Code\WaiMai\Lib\WaiMai.IDAL.pdb
+E:\个人\快餐\Code\WaiMai\WaiMai.IDAL\obj\Debug\WaiMai.IDAL.csprojResolveAssemblyReference.cache
+E:\个人\快餐\Code\WaiMai\WaiMai.IDAL\obj\Debug\WaiMai.IDAL.dll
+E:\个人\快餐\Code\WaiMai\WaiMai.IDAL\obj\Debug\WaiMai.IDAL.pdb
