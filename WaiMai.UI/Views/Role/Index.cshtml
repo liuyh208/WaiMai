@@ -46,11 +46,12 @@
                 title: '角色的设置',  //标识
                 //下面的这些属性如果谁不太清楚的话我建议去官方网站去学习或者在群里我们讨论，这里就不说了
                 iconCls: 'icon-save',
-                height: 368,
+                fit:true,
+                //height: 368,
                 nowrap: true,
                 autoRowHeight: false,
                 striped: true,
-                collapsible: true,
+                collapsible: false,
                 pagination: true,
                 rownumbers: true,
                 //sortName: 'ID',    //根据某个字段给easyUI排序
@@ -357,35 +358,32 @@
 </head>
 <body>
     <!-----------------------EasyUI的DataGird控件的放置----------------------->
-    <div>
+    <div class="easyui-panel" data-options="fit:true,collapsible:false,border:false">
         <!-------------------------------搜索框----------------------------------->
         <fieldset>
             <legend>角色详细信息模糊搜索</legend>
-        <div>
-            <label for="txtRealName">角色名称：</label>
-            <input type="text" ID="txtRealName" name="txtRealName" />&nbsp;&nbsp;&nbsp;&nbsp;
-            <label for="txtEnabled">是否有效：</label>
-            <select class="easyui-combobox" id="txtEnabled" style="width:90px;" name="txtEnabled">
-                <option value="-1">请选择</option>
-                <option value="1">有效</option>
-                <option value="0">无效</option>
-            </select>&nbsp;&nbsp;&nbsp;&nbsp;
-            <label for="txtCategoryCode">角色类型：</label>
-            <select id="txtCategoryCode" class="easyui-combobox" style="width:90px;" name="txtCategoryCode">
-                <option value="-1">请选择</option>
-                <option value="0">普通角色</option>
-                <option value="1">特殊角色</option>
-                <option value="2">VIP高级会员</option>
-            </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div>
+                <label for="txtRealName">角色名称：</label>
+                <input type="text" id="txtRealName" name="txtRealName" />&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="txtEnabled">是否有效：</label>
+                <select class="easyui-combobox" id="txtEnabled" style="width:90px;" name="txtEnabled">
+                    <option value="-1">请选择</option>
+                    <option value="1">有效</option>
+                    <option value="0">无效</option>
+                </select>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="txtCategoryCode">角色类型：</label>
+                <select id="txtCategoryCode" class="easyui-combobox" style="width:90px;" name="txtCategoryCode">
+                    <option value="-1">请选择</option>
+                    <option value="0">普通角色</option>
+                    <option value="1">特殊角色</option>
+                    <option value="2">VIP高级会员</option>
+                </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSerach">模糊搜索</a>
-        </div>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSerach">模糊搜索</a>
+            </div>
         </fieldset>
-
         <!-------------------------------用户详细信息----------------------------------->
-        <table id="test" style="width: 940px" title="用户操作" iconcls="icon-edit">
-            
-        </table>
+        <table id="test" class="easyui-datagrid" data-options="fit:true,collapsible:false" title="用户操作" iconcls="icon-edit"></table>
     </div>
 
     <!--------------------------添加用户信息的弹出层---------------------------->

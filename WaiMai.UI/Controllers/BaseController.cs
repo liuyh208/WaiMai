@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WaiMai.UI.Portal.Controllers
+namespace WaiMai.UI.Controllers
 {
     /// <summary>
     /// 基类BaseController，过滤器

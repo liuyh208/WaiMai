@@ -48,6 +48,7 @@
     <Compile Include="IBaseService.cs" />
     <Compile Include="IBaseRoleService.cs" />
     <Compile Include="IBaseUserService.cs" />
+    <Compile Include="IMenuInfoService.cs" />
     <Compile Include="IService.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

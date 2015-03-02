@@ -27,6 +27,12 @@ namespace WaiMai.IDAL
         IDAL.IBaseUserRepository BaseUserRepository { get; }
 
 		   //每个表对应的实体仓储对象
+        IDAL.IMenuGroupRepository MenuGroupRepository { get; }
+
+		   //每个表对应的实体仓储对象
+        IDAL.IMenuInfoRepository MenuInfoRepository { get; }
+
+		   //每个表对应的实体仓储对象
         IDAL.IR_Group_PermissionRepository R_Group_PermissionRepository { get; }
 
 		   //每个表对应的实体仓储对象

@@ -35,5 +35,7 @@ namespace WaiMai.Model
         public DbSet<R_Group_Permission> R_Group_Permission { get; set; }
         public DbSet<R_Group_User> R_Group_User { get; set; }
         public DbSet<R_Group_Role> R_Group_Role { get; set; }
+        public DbSet<MenuGroup> MenuGroup { get; set; }
+        public DbSet<MenuInfo> MenuInfo { get; set; }
     }
 }

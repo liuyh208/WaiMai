@@ -41,11 +41,11 @@
                 url: '/Group/GetAllPermissionGroups',   //指向后台的Action来获取当前用户的信息的Json格式的数据
                 title: '菜单组的展示',
                 iconCls: 'icon-save',
-                height: 368,
+                fit:true,
                 nowrap: true,
                 autoRowHeight: false,
                 striped: true,
-                collapsible: true,
+              
                 pagination: true,
                 rownumbers: true,
                 sortOrder: 'asc',
@@ -335,7 +335,7 @@
 </head>
 <body>
     <!-----------------------EasyUI的DataGird控件的放置----------------------->
-    <div>
+    <div class="easyui-panel" data-options="fit:true,collapsible:false,border:false">
         <!-----------------------搜索框-------------------------->
         <fieldset>
             <legend>菜单组详细信息模糊查询</legend>
@@ -353,8 +353,7 @@
         </fieldset>
 
         <!--------------------菜单组详细信息显示----------------------->
-        <table id="test"  style="width: 940px" iconcls="icon-edit">
-        </table>
+        <table id="test"  iconcls="icon-edit"></table>
     </div>
 
     <!--------------------------添加权限信息的弹出层---------------------------->

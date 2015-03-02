@@ -7,7 +7,7 @@ using WaiMai.BLL;
 using WaiMai.Common;
 using WaiMai.Model;
 
-namespace WaiMai.UI.Portal.Controllers
+namespace WaiMai.UI.Controllers
 {
     public class LoginController : Controller
     {

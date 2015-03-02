@@ -45,11 +45,11 @@
                 title: '权限的展示',  //标识
                 //下面的这些属性如果谁不太清楚的话我建议去官方网站去学习或者在群里我们讨论，这里就不说了
                 iconCls: 'icon-save',
-                height: 368,
+                fit:true,
                 nowrap: true,
                 autoRowHeight: false,
                 striped: true,
-                collapsible: true,
+               
                 pagination: true,
                 rownumbers: true,
                 sortOrder: 'asc',
@@ -380,38 +380,37 @@
 </head>
 <body>
     <!-----------------------EasyUI的DataGird控件的放置----------------------->
-    <div>
+    <div class="easyui-panel" data-options="fit:true,collapsible:false,border:false">
         <!-------------------------------搜索框----------------------------------->
         <fieldset>
             <legend>权限详细信息模糊搜索</legend>
             <div>
                 <label for="txtPerMission">权限名称：</label>
                 <input type="text" id="txtPerMission" name="txtPerMission" />&nbsp;&nbsp;&nbsp;&nbsp;
-             <label for="txtRequestHttpType">请求类型：</label>
+                <label for="txtRequestHttpType">请求类型：</label>
                 <select class="easyui-combobox" id="txtRequestHttpType" name="txtRequestHttpType" style="width: 90px;">
                     <option value="-1">请选择</option>
                     <option value="0">HttpGet</option>
                     <option value="1">HttpPost</option>
                 </select>&nbsp;&nbsp;&nbsp;&nbsp;
-            <label for="txtEnabled">是否有效：</label>
+                <label for="txtEnabled">是否有效：</label>
                 <select class="easyui-combobox" id="txtEnabled" style="width: 90px;" name="txtEnabled">
                     <option value="-1">请选择</option>
                     <option value="1">有效</option>
                     <option value="0">无效</option>
                 </select>&nbsp;&nbsp;&nbsp;&nbsp;
-              <label for="txtActionType">权限类型：</label>
+                <label for="txtActionType">权限类型：</label>
                 <select class="easyui-combobox" id="txtActionType" style="width: 90px;" name="txtActionType">
                     <option value="-1">请选择</option>
                     <option value="1">特殊权限</option>
                     <option value="0">普通权限</option>
                 </select>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSerach">模糊搜索</a>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSerach">模糊搜索</a>
             </div>
         </fieldset>
 
         <!-------------------------------权限详细信息----------------------------------->
-        <table id="test" style="width: 940px" iconcls="icon-edit">
-        </table>
+        <table id="test" iconcls="icon-edit"></table>
     </div>
 
     <!--------------------------添加权限信息的弹出层---------------------------->

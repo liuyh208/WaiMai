@@ -8,7 +8,7 @@ using WaiMai.Common.Enum;
 using WaiMai.Common;
 using WaiMai.Common.select;
 
-namespace WaiMai.UI.Portal.Controllers
+namespace WaiMai.UI.Controllers
 {
     public class UserInfoController : Controller
     {

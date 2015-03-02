@@ -32,6 +32,14 @@ namespace WaiMai.DAL
         {
             get { return new BaseUserRepository(); }
         }
+		        public IDAL.IMenuGroupRepository MenuGroupRepository
+        {
+            get { return new MenuGroupRepository(); }
+        }
+		        public IDAL.IMenuInfoRepository MenuInfoRepository
+        {
+            get { return new MenuInfoRepository(); }
+        }
 		        public IDAL.IR_Group_PermissionRepository R_Group_PermissionRepository
         {
             get { return new R_Group_PermissionRepository(); }

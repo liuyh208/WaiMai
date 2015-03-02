@@ -45,6 +45,22 @@ namespace WaiMai.BLL
             CurrentRepository = _DbSession.BaseUserRepository;
         }
 	}
+	 public partial class MenuGroupService : BaseService<MenuGroup>, IMenuGroupService
+    {
+		//只要想操作数据库，我们只要拿到DbSession就行
+        public override void SetCurrentRepository()
+        {
+            CurrentRepository = _DbSession.MenuGroupRepository;
+        }
+	}
+	 public partial class MenuInfoService : BaseService<MenuInfo>, IMenuInfoService
+    {
+		//只要想操作数据库，我们只要拿到DbSession就行
+        public override void SetCurrentRepository()
+        {
+            CurrentRepository = _DbSession.MenuInfoRepository;
+        }
+	}
 	 public partial class R_Group_PermissionService : BaseService<R_Group_Permission>, IR_Group_PermissionService
     {
 		//只要想操作数据库，我们只要拿到DbSession就行

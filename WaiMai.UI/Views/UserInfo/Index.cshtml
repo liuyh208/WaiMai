@@ -53,11 +53,11 @@
                 title: '用户的展示',  //标识
                 //下面的这些属性如果谁不太清楚的话我建议去官方网站去学习或者在群里我们讨论，这里就不说了
                 iconCls: 'icon-save',
-                height: 368,
+                fit:true,
                 nowrap: true,
                 autoRowHeight: false,
                 striped: true,
-                collapsible: true,
+                
                 pagination: true,
                 rownumbers: true,
                 //sortName: 'ID',    //根据某个字段给easyUI排序
@@ -177,21 +177,7 @@
                 if (validate == false) {
                     return false;
                 }
-                //获取参数传递给前台
-                //var postData = {
-                //    UserName: $("#UserName").val(),
-                //    RealName: $("#RealName").val(),
-                //    UserPassword: $("#UserPassword").val(),
-                //    Email: $("#Email").val(),
-                //    SecurityLevel: $("#SecurityLevel").combobox('getValue'),
-                //    Gender: $('input[name="Gender"]:checked').val(),
-                //    Birthday: $("#Birthday").datebox('getValue'),
-                //    Mobile: $("#Mobile").val(),
-                //    Telephone: $("#Telephone").val(),
-                //    QICQ: $("#QICQ").val(),
-                //    SortCode: $("#SortCode").val(),
-                //    Description: $("#Description").val()
-                //};
+               
                 var postData = $("#ff").serializeArray();
 
                 //发送异步请求到后台保存用户数据
@@ -474,39 +460,37 @@
 </head>
 <body>
     <!-----------------------EasyUI的DataGird控件的放置----------------------->
-    <div>
+    <div class="easyui-panel" data-options="fit:true,collapsible:false,border:false">
         <!-------------------------------搜索框----------------------------------->
         <fieldset>
             <legend>用户详细信息模糊搜索</legend>
-        <div>
-            <label for="txtRealName">姓名：</label>
-            <input type="text" ID="txtRealName" name="txtRealName" style="width:80px"  />&nbsp;&nbsp;&nbsp;
-            <label for="txtTelephone">电话：</label>
-            <input type="text" ID="txtTelephone" name="txtTelephone" style="width:100px"  />&nbsp;&nbsp;&nbsp;
-            <label for="txtMail">邮箱：</label>
-            <input type="text" ID="txtMail" name="txtMail" style="width:120px"  />&nbsp;&nbsp;&nbsp;
-            <label for="txtEnabled">是否职员：</label>
-            <select class="easyui-combobox" id="txtEnabled" style="width:90px;" name="txtEnabled">
-                <option value="-1">请选择</option>
-                <option value="1">是职员</option>
-                <option value="0">不是职员</option>
-            </select>&nbsp;&nbsp;&nbsp;
-            <label for="txtAuditStatus">审核状态：</label>
-            <select id="txtAuditStatus" class="easyui-combobox" style="width:90px;" name="txtAuditStatus">
-                <option value="-1">请选择</option>
-                <option value="已审核">已审核</option>
-                <option value="未审核">未审核</option>
-            </select>&nbsp;&nbsp;&nbsp;
+            <div>
+                <label for="txtRealName">姓名：</label>
+                <input type="text" id="txtRealName" name="txtRealName" style="width:80px" />&nbsp;&nbsp;&nbsp;
+                <label for="txtTelephone">电话：</label>
+                <input type="text" id="txtTelephone" name="txtTelephone" style="width:100px" />&nbsp;&nbsp;&nbsp;
+                <label for="txtMail">邮箱：</label>
+                <input type="text" id="txtMail" name="txtMail" style="width:120px" />&nbsp;&nbsp;&nbsp;
+                <label for="txtEnabled">是否职员：</label>
+                <select class="easyui-combobox" id="txtEnabled" style="width:90px;" name="txtEnabled">
+                    <option value="-1">请选择</option>
+                    <option value="1">是职员</option>
+                    <option value="0">不是职员</option>
+                </select>&nbsp;&nbsp;&nbsp;
+                <label for="txtAuditStatus">审核状态：</label>
+                <select id="txtAuditStatus" class="easyui-combobox" style="width:90px;" name="txtAuditStatus">
+                    <option value="-1">请选择</option>
+                    <option value="已审核">已审核</option>
+                    <option value="未审核">未审核</option>
+                </select>&nbsp;&nbsp;&nbsp;
 
 
-            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSerach">模糊搜索</a>
-        </div>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSerach">模糊搜索</a>
+            </div>
         </fieldset>
 
         <!-------------------------------用户详细信息----------------------------------->
-        <table id="test" style="width: 940px" title="用户操作" iconcls="icon-edit">
-            
-        </table>
+        <table id="test" title="用户操作" iconcls="icon-edit"></table>
     </div>
 
     <!--------------------------添加用户信息的弹出层---------------------------->

@@ -24,6 +24,12 @@ namespace WaiMai.IBLL
 	 public partial interface IBaseUserService:IBaseService<BaseUser>
     {
 	}
+	 public partial interface IMenuGroupService:IBaseService<MenuGroup>
+    {
+	}
+	 public partial interface IMenuInfoService:IBaseService<MenuInfo>
+    {
+	}
 	 public partial interface IR_Group_PermissionService:IBaseService<R_Group_Permission>
     {
 	}

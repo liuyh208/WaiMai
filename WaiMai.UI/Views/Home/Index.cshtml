@@ -34,11 +34,13 @@
 
             //Tab页签的实现
             $("#worktab").tabs({});
+           // loadMenus();
         });
 
         //绑定菜单按钮的点击事件  MenuLink
         function BindMenuClickEvent() {
             $(".MenuLink").click(function () {
+             
                 //获取按钮里面的src属性
                 var src = $(this).attr("src");
                 //将主框架的iframe跳转到菜单指向的地址
@@ -46,6 +48,7 @@
 
                 //得到节点的名字来放去Title
                 var title = $(this).text();
+        
                 //拼接一个Iframe标签
                 var str = '<iframe id="frmWorkArea" width="100%" height="100%" frameborder="0" scrolling="yes" src="' + $(this).attr("src") + '"></iframe>'
 
@@ -76,6 +79,13 @@
             var addDate = year + "年" + month + "月" + day + "日,时间:" + time;
             $("#date").text(addDate);
         }
+
+        function loadMenus() {
+            $.get("/Menu/index", function (v) {
+ 
+                $("#divWest").html(v);
+            });
+        }
     </script>
 </head>
 <body class="easyui-layout">
@@ -89,29 +99,19 @@
 
     @*--------------------------------------网站菜单栏开始（Left）--------------------------------------*@
     <div data-options="region:'west',split:true" title="菜单导航" style="width: 200px; padding: 1px; overflow: hidden;">
-        <div class="easyui-accordion" data-options="fit:true,border:false">
-            <div title="后台权限管理" iconcls="icon-edit" data-options="selected:true" style="padding: 10px; overflow: auto;">
-                @*------存放菜单项-------*@
-                <p><a href="javascript:void(0)" src="/UserInfo/Index" class="MenuLink">用户管理</a></p>
-                <p><a href="javascript:void(0)" src="/Role/Index" class="MenuLink">角色管理</a></p>
-                <p><a href="javascript:void(0)" src="/Permission/Index" class="MenuLink">权限管理</a></p>
-                <p><a href="javascript:void(0)" src="/Group/Index" class="MenuLink">权限组管理</a></p>
-            </div>
-            <div title="网站基本管理" iconcls="icon-edit" style="padding: 10px;">
-                <p><a href="javascript:void(0)">新闻管理</a></p>
-                <p><a href="javascript:void(0)">图片管理</a></p>
-                <p><a href="javascript:void(0)">上传管理</a></p>
-            </div>
-            <div title="网站开发支持" iconcls="icon-edit" style="padding: 10px">
-                content3
-            </div>
+
+        <div id="divWest" class="easyui-accordion" data-options="fit:true">
+            @{
+                Html.RenderAction("Menus");
+            }
         </div>
-    </div>
+
+        </div>
     @*--------------------------------------网站结束（Left）--------------------------------------*@
 
     @*--------------------------------------网站中间部分开始（Center） 面包屑--------------------------------------*@
     <div data-options="region:'center'" style="overflow: hidden;">
-        <div id="worktab" fit="true">
+        <div id="worktab" fit="true" border="false">
             <div title="外卖订单管理系统1" data-options="cache:false">
                 <iframe id="frmWorkArea" width="100%" height="100%" frameborder="0" scrolling="yes" src="~/Welcome.html"></iframe>
             </div>

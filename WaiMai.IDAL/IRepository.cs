@@ -27,6 +27,16 @@ namespace WaiMai.IDAL
      
     }
 
+	    public partial interface IMenuGroupRepository : IBaseRepository<MenuGroup>
+    {
+     
+    }
+
+	    public partial interface IMenuInfoRepository : IBaseRepository<MenuInfo>
+    {
+     
+    }
+
 	    public partial interface IR_Group_PermissionRepository : IBaseRepository<R_Group_Permission>
     {
      

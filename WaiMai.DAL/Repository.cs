@@ -29,6 +29,16 @@ namespace WaiMai.DAL
 
     }
 
+	    public partial class MenuGroupRepository : BaseRepository<MenuGroup>, IMenuGroupRepository
+    {
+
+    }
+
+	    public partial class MenuInfoRepository : BaseRepository<MenuInfo>, IMenuInfoRepository
+    {
+
+    }
+
 	    public partial class R_Group_PermissionRepository : BaseRepository<R_Group_Permission>, IR_Group_PermissionRepository
     {
 
