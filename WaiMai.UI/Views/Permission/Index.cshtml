@@ -2,25 +2,6 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-   <title>权限的实现</title>
-    @*添加Jquery EasyUI的样式*@
-    <link href="@Url.Content("~/Content/jquery-easyui-1.4.1/themes/default/easyui.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/jquery-easyui-1.4.1/themes/icon.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
-
-    @*添加Jquery，EasyUI和easyUI的语言包的JS文件*@
-    <script src="@Url.Content("~/Content/jquery-easyui-1.4.1/jquery.min.js")"></script>
-    <script src="@Url.Content("~/Content/jquery-easyui-1.4.1/jquery.easyui.min.js")"></script>
-    <script src="@Url.Content("~/Content/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js")"></script>
-   
-     @*日期格式的引用*@
-    <script src="@Url.Content("~/Content/datapattern.js")"></script>
-
     @*实现对EasyUI的DataGird控件操作的JS代码*@
     <script type="text/javascript">
         $(function () {
@@ -40,7 +21,7 @@
 
         //实现对权限DataGird控件的绑定操作
         function initTable(queryData) {
-            $('#test').datagrid({   //定位到Table标签，Table标签的ID是test
+            $('#tbPermission').datagrid({   //定位到Table标签，Table标签的ID是test
                 url: '/Permission/GetAllPermissionInfos',   //指向后台的Action来获取当前用户的信息的Json格式的数据
                 title: '权限的展示',  //标识
                 //下面的这些属性如果谁不太清楚的话我建议去官方网站去学习或者在群里我们讨论，这里就不说了
@@ -377,8 +358,7 @@
             initTable(query);
         }
     </script>
-</head>
-<body>
+
     <!-----------------------EasyUI的DataGird控件的放置----------------------->
     <div class="easyui-panel" data-options="fit:true,collapsible:false,border:false">
         <!-------------------------------搜索框----------------------------------->
@@ -410,7 +390,7 @@
         </fieldset>
 
         <!-------------------------------权限详细信息----------------------------------->
-        <table id="test" iconcls="icon-edit"></table>
+        <table id="tbPermission" iconcls="icon-edit"></table>
     </div>
 
     <!--------------------------添加权限信息的弹出层---------------------------->
@@ -703,7 +683,3 @@
 
         </form>
     </div>
-
-
-</body>
-</html>

@@ -2,24 +2,6 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>实现角色的增删改查</title>
-    @*添加Jquery EasyUI的样式*@
-    <link href="@Url.Content("~/Content/jquery-easyui-1.4.1/themes/default/easyui.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/jquery-easyui-1.4.1/themes/icon.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
-
-    @*添加Jquery，EasyUI和easyUI的语言包的JS文件*@
-    <script src="@Url.Content("~/Content/jquery-easyui-1.4.1/jquery.min.js")"></script>
-    <script src="@Url.Content("~/Content/jquery-easyui-1.4.1/jquery.easyui.min.js")"></script>
-    <script src="@Url.Content("~/Content/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js")"></script>
-   
-     @*日期格式的引用*@
-    <script src="@Url.Content("~/Content/datapattern.js")"></script>
 
     @*实现对EasyUI的DataGird控件操作的JS代码*@
     <script type="text/javascript">
@@ -40,7 +22,7 @@
 
         //实现对角色DataGird控件的绑定操作
         function initTable(queryData) {
-            $('#test').datagrid({   //定位到Table标签，Table标签的ID是test
+            $('#tbRoles').datagrid({   //定位到Table标签，Table标签的ID是test
                 //   UserInfo是控制器，GetAllUserInfos是控制器中获取用户数据的一个Action
                 url: '/Role/GetAllRoleInfos',   //指向后台的Action来获取当前用户的信息的Json格式的数据
                 title: '角色的设置',  //标识
@@ -355,8 +337,7 @@
             initTable(query);
         }
     </script>
-</head>
-<body>
+
     <!-----------------------EasyUI的DataGird控件的放置----------------------->
     <div class="easyui-panel" data-options="fit:true,collapsible:false,border:false">
         <!-------------------------------搜索框----------------------------------->
@@ -383,7 +364,7 @@
             </div>
         </fieldset>
         <!-------------------------------用户详细信息----------------------------------->
-        <table id="test" class="easyui-datagrid" data-options="fit:true,collapsible:false" title="用户操作" iconcls="icon-edit"></table>
+        <table id="tbRoles" class="easyui-datagrid" data-options="fit:true,collapsible:false" title="用户操作" iconcls="icon-edit"></table>
     </div>
 
     <!--------------------------添加用户信息的弹出层---------------------------->
@@ -594,5 +575,4 @@
 
         </form>
     </div>
-</body>
-</html>
+

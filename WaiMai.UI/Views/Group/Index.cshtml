@@ -2,22 +2,6 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    @*添加Jquery EasyUI的样式*@
-    <link href="@Url.Content("~/Content/jquery-easyui-1.4.1/themes/default/easyui.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/jquery-easyui-1.4.1/themes/icon.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
-
-    @*添加Jquery，EasyUI和easyUI的语言包的JS文件*@
-    <script src="@Url.Content("~/Content/jquery-easyui-1.4.1/jquery.min.js")"></script>
-    <script src="@Url.Content("~/Content/jquery-easyui-1.4.1/jquery.easyui.min.js")"></script>
-    <script src="@Url.Content("~/Content/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js")"></script>
-   
-     @*日期格式的引用*@
-    <script src="@Url.Content("~/Content/datapattern.js")"></script>
 
      @*实现对EasyUI的DataGird控件操作的JS代码*@
     <script type="text/javascript">
@@ -37,7 +21,7 @@
 
         //实现对权限DataGird控件的绑定操作
         function initTable(queryData) {
-            $('#test').datagrid({
+            $('#tbGroup').datagrid({
                 url: '/Group/GetAllPermissionGroups',   //指向后台的Action来获取当前用户的信息的Json格式的数据
                 title: '菜单组的展示',
                 iconCls: 'icon-save',
@@ -332,8 +316,7 @@
         }
     </script>
 
-</head>
-<body>
+
     <!-----------------------EasyUI的DataGird控件的放置----------------------->
     <div class="easyui-panel" data-options="fit:true,collapsible:false,border:false">
         <!-----------------------搜索框-------------------------->
@@ -353,7 +336,7 @@
         </fieldset>
 
         <!--------------------菜单组详细信息显示----------------------->
-        <table id="test"  iconcls="icon-edit"></table>
+        <table id="tbGroup"  iconcls="icon-edit"></table>
     </div>
 
     <!--------------------------添加权限信息的弹出层---------------------------->
@@ -599,5 +582,4 @@
 
         </form>
     </div>
-</body>
-</html>
+

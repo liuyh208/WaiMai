@@ -562,6 +562,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\images\Thumbs.db" />
     <Content Include="Welcome.html" />
+    <None Include="Properties\PublishProfiles\Debug.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -598,6 +599,7 @@
     <Content Include="Views\Group\Index.cshtml" />
     <Content Include="Views\UserInfo\SetRole.cshtml" />
     <Content Include="Views\Home\Menus.cshtml" />
+    <Content Include="Views\UserInfo\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

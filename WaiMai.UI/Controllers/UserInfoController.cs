@@ -27,6 +27,10 @@ namespace WaiMai.UI.Controllers
             return View();
         }
 
+        public ActionResult Index2()
+        {
+            return View();
+        }
         /// <summary>
         /// 获取所有的用户信息
         /// </summary>
