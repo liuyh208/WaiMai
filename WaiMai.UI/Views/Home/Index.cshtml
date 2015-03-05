@@ -84,8 +84,24 @@
 
     @*--------------------------------------网站头部开始（TOP）--------------------------------------*@
     <div data-options="region:'north',border:false,collapsible:false" style="height: 60px;">
-        <h1>外卖订单管理系统1.0 </h1>
-        @*<div><a href="/Login/Index"><b>注销</b></a></div>*@
+        @*<h1>外卖订单管理系统1.0 </h1>
+    <div><a href="/Login/Index"><b>注销</b></a></div>*@
+        
+        <table style="height: 56px; width: 100%;">
+            <tr>
+                <td style="width: 20px;"></td>
+                <td style="text-align: right; vertical-align: middle; width: 0px;">
+                    <img src="~/Images/logo.jpg" style="height: 40px; width: 40px;" />
+                </td>
+                <td style="width: 10px;"></td>
+                <td style="font-size: 28px; font-weight: bold; vertical-align: middle;">外卖订单管理系统1.0 </td>
+                <td style="width: auto;"></td>
+                <td id="tdlogin" style="text-align: right; width: 100px;"><b>欢迎你 @User.Identity.Name</b></td>
+
+                <td id="tdExit" style="text-align: center; width: 50px;"><a href="../Account/logout" class="easyui-linkbutton" data-options="plain:true">退出</a> </td>
+                <td style="width: 30px;"></td>
+            </tr>
+        </table>
     </div>
     @*--------------------------------------网站头部结束（TOP）--------------------------------------*@
 

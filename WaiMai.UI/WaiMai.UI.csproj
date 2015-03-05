@@ -136,6 +136,7 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OrderManagerController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
@@ -561,6 +562,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\images\Thumbs.db" />
+    <Content Include="Images\logo.jpg" />
     <Content Include="Welcome.html" />
     <None Include="Properties\PublishProfiles\Debug.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -600,6 +602,7 @@
     <Content Include="Views\UserInfo\SetRole.cshtml" />
     <Content Include="Views\Home\Menus.cshtml" />
     <Content Include="Views\UserInfo\Index2.cshtml" />
+    <Content Include="Views\OrderManager\Start.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
