@@ -122,6 +122,19 @@
           <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="CookInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="Address" Type="nvarchar" MaxLength="254" />
+          <Property Name="merit" Type="nvarchar" MaxLength="254" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="254" />
+        </EntityType>
         <EntityType Name="MenuGroup">
           <Key>
             <PropertyRef Name="Id" />
@@ -234,43 +247,7 @@
           <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_BasePermissionGroupR_Group_Permission">
-          <End Role="BasePermissionGroup" Type="Self.BasePermissionGroup" Multiplicity="1" />
-          <End Role="R_Group_Permission" Type="Self.R_Group_Permission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BasePermissionGroup">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="R_Group_Permission">
-              <PropertyRef Name="BasePermissionGroupID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BasePermissionGroupR_Group_Role">
-          <End Role="BasePermissionGroup" Type="Self.BasePermissionGroup" Multiplicity="1" />
-          <End Role="R_Group_Role" Type="Self.R_Group_Role" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BasePermissionGroup">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="R_Group_Role">
-              <PropertyRef Name="BasePermissionGroupID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BasePermissionGroupR_Group_User">
-          <End Role="BasePermissionGroup" Type="Self.BasePermissionGroup" Multiplicity="1" />
-          <End Role="R_Group_User" Type="Self.R_Group_User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BasePermissionGroup">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="R_Group_User">
-              <PropertyRef Name="BasePermissionGroupID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BasePermissionR_Group_Permission">
+        <Association Name="FK__R_Group_P__BaseP__182C9B23">
           <End Role="BasePermission" Type="Self.BasePermission" Multiplicity="1" />
           <End Role="R_Group_Permission" Type="Self.R_Group_Permission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -282,19 +259,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BasePermissionR_Role_Permission">
-          <End Role="BasePermission" Type="Self.BasePermission" Multiplicity="1" />
-          <End Role="R_Role_Permission" Type="Self.R_Role_Permission" Multiplicity="*" />
+        <Association Name="FK__R_Group_P__BaseP__1920BF5C">
+          <End Role="BasePermissionGroup" Type="Self.BasePermissionGroup" Multiplicity="1" />
+          <End Role="R_Group_Permission" Type="Self.R_Group_Permission" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="BasePermission">
+            <Principal Role="BasePermissionGroup">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="R_Role_Permission">
-              <PropertyRef Name="PermissionID" />
+            <Dependent Role="R_Group_Permission">
+              <PropertyRef Name="BasePermissionGroupID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BaseRoleR_Group_Role">
+        <Association Name="FK__R_Group_R__BaseP__1ED998B2">
+          <End Role="BasePermissionGroup" Type="Self.BasePermissionGroup" Multiplicity="1" />
+          <End Role="R_Group_Role" Type="Self.R_Group_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BasePermissionGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="R_Group_Role">
+              <PropertyRef Name="BasePermissionGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__R_Group_R__BaseR__1DE57479">
           <End Role="BaseRole" Type="Self.BaseRole" Multiplicity="1" />
           <End Role="R_Group_Role" Type="Self.R_Group_Role" Multiplicity="*" />
           <ReferentialConstraint>
@@ -306,19 +295,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BaseRoleR_Role_Permission">
-          <End Role="BaseRole" Type="Self.BaseRole" Multiplicity="1" />
-          <End Role="R_Role_Permission" Type="Self.R_Role_Permission" Multiplicity="*" />
+        <Association Name="FK__R_Group_U__BaseP__24927208">
+          <End Role="BasePermissionGroup" Type="Self.BasePermissionGroup" Multiplicity="1" />
+          <End Role="R_Group_User" Type="Self.R_Group_User" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="BaseRole">
+            <Principal Role="BasePermissionGroup">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="R_Role_Permission">
-              <PropertyRef Name="RoleID" />
+            <Dependent Role="R_Group_User">
+              <PropertyRef Name="BasePermissionGroupID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BaseUserR_Group_User">
+        <Association Name="FK__R_Group_U__BaseU__239E4DCF">
           <End Role="BaseUser" Type="Self.BaseUser" Multiplicity="1" />
           <End Role="R_Group_User" Type="Self.R_Group_User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -330,7 +319,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_R_UserInfo_ActionInfoActionInfo">
+        <Association Name="FK__R_Role_Pe__Permi__29572725">
+          <End Role="BasePermission" Type="Self.BasePermission" Multiplicity="1" />
+          <End Role="R_Role_Permission" Type="Self.R_Role_Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BasePermission">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="R_Role_Permission">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__R_Role_Pe__RoleI__2A4B4B5E">
+          <End Role="BaseRole" Type="Self.BaseRole" Multiplicity="1" />
+          <End Role="R_Role_Permission" Type="Self.R_Role_Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BaseRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="R_Role_Permission">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__R_User_Pe__Permi__300424B4">
           <End Role="BasePermission" Type="Self.BasePermission" Multiplicity="1" />
           <End Role="R_User_Permission" Type="Self.R_User_Permission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -342,19 +355,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RoleR_UserInfo_Role">
-          <End Role="BaseRole" Type="Self.BaseRole" Multiplicity="1" />
-          <End Role="R_User_Role" Type="Self.R_User_Role" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BaseRole">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="R_User_Role">
-              <PropertyRef Name="RoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserInfoR_UserInfo_ActionInfo">
+        <Association Name="FK__R_User_Pe__UserI__2F10007B">
           <End Role="BaseUser" Type="Self.BaseUser" Multiplicity="1" />
           <End Role="R_User_Permission" Type="Self.R_User_Permission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -366,7 +367,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserInfoR_UserInfo_Role">
+        <Association Name="FK__R_User_Ro__RoleI__34C8D9D1">
+          <End Role="BaseRole" Type="Self.BaseRole" Multiplicity="1" />
+          <End Role="R_User_Role" Type="Self.R_User_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BaseRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="R_User_Role">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__R_User_Ro__UserI__35BCFE0A">
           <End Role="BaseUser" Type="Self.BaseUser" Multiplicity="1" />
           <End Role="R_User_Role" Type="Self.R_User_Role" Multiplicity="*" />
           <ReferentialConstraint>
@@ -383,6 +396,7 @@
           <EntitySet Name="BasePermissionGroup" EntityType="Self.BasePermissionGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaseRole" EntityType="Self.BaseRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaseUser" EntityType="Self.BaseUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookInfo" EntityType="Self.CookInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuGroup" EntityType="Self.MenuGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuInfo" EntityType="Self.MenuInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_Group_Permission" EntityType="Self.R_Group_Permission" Schema="dbo" store:Type="Tables" />
@@ -391,51 +405,51 @@
           <EntitySet Name="R_Role_Permission" EntityType="Self.R_Role_Permission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_User_Permission" EntityType="Self.R_User_Permission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_User_Role" EntityType="Self.R_User_Role" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_BasePermissionGroupR_Group_Permission" Association="Self.FK_BasePermissionGroupR_Group_Permission">
+          <AssociationSet Name="FK__R_Group_P__BaseP__182C9B23" Association="Self.FK__R_Group_P__BaseP__182C9B23">
+            <End Role="BasePermission" EntitySet="BasePermission" />
+            <End Role="R_Group_Permission" EntitySet="R_Group_Permission" />
+          </AssociationSet>
+          <AssociationSet Name="FK__R_Group_P__BaseP__1920BF5C" Association="Self.FK__R_Group_P__BaseP__1920BF5C">
             <End Role="BasePermissionGroup" EntitySet="BasePermissionGroup" />
             <End Role="R_Group_Permission" EntitySet="R_Group_Permission" />
           </AssociationSet>
-          <AssociationSet Name="FK_BasePermissionGroupR_Group_Role" Association="Self.FK_BasePermissionGroupR_Group_Role">
+          <AssociationSet Name="FK__R_Group_R__BaseP__1ED998B2" Association="Self.FK__R_Group_R__BaseP__1ED998B2">
             <End Role="BasePermissionGroup" EntitySet="BasePermissionGroup" />
             <End Role="R_Group_Role" EntitySet="R_Group_Role" />
           </AssociationSet>
-          <AssociationSet Name="FK_BasePermissionGroupR_Group_User" Association="Self.FK_BasePermissionGroupR_Group_User">
+          <AssociationSet Name="FK__R_Group_R__BaseR__1DE57479" Association="Self.FK__R_Group_R__BaseR__1DE57479">
+            <End Role="BaseRole" EntitySet="BaseRole" />
+            <End Role="R_Group_Role" EntitySet="R_Group_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK__R_Group_U__BaseP__24927208" Association="Self.FK__R_Group_U__BaseP__24927208">
             <End Role="BasePermissionGroup" EntitySet="BasePermissionGroup" />
             <End Role="R_Group_User" EntitySet="R_Group_User" />
           </AssociationSet>
-          <AssociationSet Name="FK_BasePermissionR_Group_Permission" Association="Self.FK_BasePermissionR_Group_Permission">
-            <End Role="BasePermission" EntitySet="BasePermission" />
-            <End Role="R_Group_Permission" EntitySet="R_Group_Permission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BasePermissionR_Role_Permission" Association="Self.FK_BasePermissionR_Role_Permission">
-            <End Role="BasePermission" EntitySet="BasePermission" />
-            <End Role="R_Role_Permission" EntitySet="R_Role_Permission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BaseRoleR_Group_Role" Association="Self.FK_BaseRoleR_Group_Role">
-            <End Role="BaseRole" EntitySet="BaseRole" />
-            <End Role="R_Group_Role" EntitySet="R_Group_Role" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BaseRoleR_Role_Permission" Association="Self.FK_BaseRoleR_Role_Permission">
-            <End Role="BaseRole" EntitySet="BaseRole" />
-            <End Role="R_Role_Permission" EntitySet="R_Role_Permission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BaseUserR_Group_User" Association="Self.FK_BaseUserR_Group_User">
+          <AssociationSet Name="FK__R_Group_U__BaseU__239E4DCF" Association="Self.FK__R_Group_U__BaseU__239E4DCF">
             <End Role="BaseUser" EntitySet="BaseUser" />
             <End Role="R_Group_User" EntitySet="R_Group_User" />
           </AssociationSet>
-          <AssociationSet Name="FK_R_UserInfo_ActionInfoActionInfo" Association="Self.FK_R_UserInfo_ActionInfoActionInfo">
+          <AssociationSet Name="FK__R_Role_Pe__Permi__29572725" Association="Self.FK__R_Role_Pe__Permi__29572725">
+            <End Role="BasePermission" EntitySet="BasePermission" />
+            <End Role="R_Role_Permission" EntitySet="R_Role_Permission" />
+          </AssociationSet>
+          <AssociationSet Name="FK__R_Role_Pe__RoleI__2A4B4B5E" Association="Self.FK__R_Role_Pe__RoleI__2A4B4B5E">
+            <End Role="BaseRole" EntitySet="BaseRole" />
+            <End Role="R_Role_Permission" EntitySet="R_Role_Permission" />
+          </AssociationSet>
+          <AssociationSet Name="FK__R_User_Pe__Permi__300424B4" Association="Self.FK__R_User_Pe__Permi__300424B4">
             <End Role="BasePermission" EntitySet="BasePermission" />
             <End Role="R_User_Permission" EntitySet="R_User_Permission" />
           </AssociationSet>
-          <AssociationSet Name="FK_RoleR_UserInfo_Role" Association="Self.FK_RoleR_UserInfo_Role">
+          <AssociationSet Name="FK__R_User_Pe__UserI__2F10007B" Association="Self.FK__R_User_Pe__UserI__2F10007B">
+            <End Role="BaseUser" EntitySet="BaseUser" />
+            <End Role="R_User_Permission" EntitySet="R_User_Permission" />
+          </AssociationSet>
+          <AssociationSet Name="FK__R_User_Ro__RoleI__34C8D9D1" Association="Self.FK__R_User_Ro__RoleI__34C8D9D1">
             <End Role="BaseRole" EntitySet="BaseRole" />
             <End Role="R_User_Role" EntitySet="R_User_Role" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserInfoR_UserInfo_ActionInfo" Association="Self.FK_UserInfoR_UserInfo_ActionInfo">
-            <End Role="BaseUser" EntitySet="BaseUser" />
-            <End Role="R_User_Permission" EntitySet="R_User_Permission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserInfoR_UserInfo_Role" Association="Self.FK_UserInfoR_UserInfo_Role">
+          <AssociationSet Name="FK__R_User_Ro__UserI__35BCFE0A" Association="Self.FK__R_User_Ro__UserI__35BCFE0A">
             <End Role="BaseUser" EntitySet="BaseUser" />
             <End Role="R_User_Role" EntitySet="R_User_Role" />
           </AssociationSet>
@@ -505,6 +519,7 @@
           </AssociationSet>
           <EntitySet Name="MenuGroup" EntityType="DataModel.MenuGroup" />
           <EntitySet Name="MenuInfo" EntityType="DataModel.MenuInfo" />
+          <EntitySet Name="CookInfo" EntityType="DataModel.CookInfo" />
         </EntityContainer>
         <EntityType Name="BaseUser">
           <Key>
@@ -916,6 +931,19 @@
           <Property Name="Url" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
           <Property Name="Ico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="CookInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="merit" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1159,6 +1187,20 @@
                 <ScalarProperty Name="Enabled" ColumnName="Enabled" />
                 <ScalarProperty Name="POrder" ColumnName="POrder" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookInfo">
+            <EntityTypeMapping TypeName="DataModel.CookInfo">
+              <MappingFragment StoreEntitySet="CookInfo">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="merit" ColumnName="merit" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

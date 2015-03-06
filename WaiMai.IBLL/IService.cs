@@ -24,6 +24,9 @@ namespace WaiMai.IBLL
 	 public partial interface IBaseUserService:IBaseService<BaseUser>
     {
 	}
+	 public partial interface ICookInfoService:IBaseService<CookInfo>
+    {
+	}
 	 public partial interface IMenuGroupService:IBaseService<MenuGroup>
     {
 	}

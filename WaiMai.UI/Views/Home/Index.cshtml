@@ -16,6 +16,8 @@
     <script src="~/Content/jquery-easyui-1.4.1/jquery.min.js"></script>
     <script src="~/Content/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
     <script src="~/Content/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
+    
+    <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css">
     @*执行JavaScript的脚本*@
     <script>    
         $(function () {
@@ -87,8 +89,8 @@
         @*<h1>外卖订单管理系统1.0 </h1>
     <div><a href="/Login/Index"><b>注销</b></a></div>*@
         
-        <table style="height: 56px; width: 100%;">
-            <tr>
+        <table style="width: 100%;">
+            <tr style="height: 55px;">
                 <td style="width: 20px;"></td>
                 <td style="text-align: right; vertical-align: middle; width: 0px;">
                     <img src="~/Images/logo.jpg" style="height: 40px; width: 40px;" />
@@ -98,7 +100,7 @@
                 <td style="width: auto;"></td>
                 <td id="tdlogin" style="text-align: right; width: 100px;"><b>欢迎你 @User.Identity.Name</b></td>
 
-                <td id="tdExit" style="text-align: center; width: 50px;"><a href="../Account/logout" class="easyui-linkbutton" data-options="plain:true">退出</a> </td>
+                <td id="tdExit" style="text-align: center; width: 50px;"><a href="../Account/logout" class="easyui-linkbutton" data-options="plain:true"><i class="fa fa-power-off fa-2x"></i></a> </td>
                 <td style="width: 30px;"></td>
             </tr>
         </table>

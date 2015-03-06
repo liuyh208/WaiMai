@@ -50,6 +50,7 @@
     <Compile Include="Enum\VisibleEnum.cs" />
     <Compile Include="KenceryValidateCode.cs" />
     <Compile Include="LoginResult.cs" />
+    <Compile Include="PagedResult.cs" />
     <Compile Include="select\ParamterQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicMethod.cs" />

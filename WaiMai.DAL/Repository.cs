@@ -29,6 +29,11 @@ namespace WaiMai.DAL
 
     }
 
+	    public partial class CookInfoRepository : BaseRepository<CookInfo>, ICookInfoRepository
+    {
+
+    }
+
 	    public partial class MenuGroupRepository : BaseRepository<MenuGroup>, IMenuGroupRepository
     {
 

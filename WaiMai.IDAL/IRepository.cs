@@ -27,6 +27,11 @@ namespace WaiMai.IDAL
      
     }
 
+	    public partial interface ICookInfoRepository : IBaseRepository<CookInfo>
+    {
+     
+    }
+
 	    public partial interface IMenuGroupRepository : IBaseRepository<MenuGroup>
     {
      

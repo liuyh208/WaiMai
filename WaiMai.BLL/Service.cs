@@ -45,6 +45,14 @@ namespace WaiMai.BLL
             CurrentRepository = _DbSession.BaseUserRepository;
         }
 	}
+	 public partial class CookInfoService : BaseService<CookInfo>, ICookInfoService
+    {
+		//只要想操作数据库，我们只要拿到DbSession就行
+        public override void SetCurrentRepository()
+        {
+            CurrentRepository = _DbSession.CookInfoRepository;
+        }
+	}
 	 public partial class MenuGroupService : BaseService<MenuGroup>, IMenuGroupService
     {
 		//只要想操作数据库，我们只要拿到DbSession就行

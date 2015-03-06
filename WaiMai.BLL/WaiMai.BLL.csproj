@@ -46,6 +46,7 @@
     <Compile Include="BasePermissionGroupService.cs" />
     <Compile Include="BasePermissionService.cs" />
     <Compile Include="BaseService.cs" />
+    <Compile Include="CookService.cs" />
     <Compile Include="MenuInfoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BaseRoleService.cs" />

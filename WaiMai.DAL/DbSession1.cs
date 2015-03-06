@@ -32,6 +32,10 @@ namespace WaiMai.DAL
         {
             get { return new BaseUserRepository(); }
         }
+		        public IDAL.ICookInfoRepository CookInfoRepository
+        {
+            get { return new CookInfoRepository(); }
+        }
 		        public IDAL.IMenuGroupRepository MenuGroupRepository
         {
             get { return new MenuGroupRepository(); }
