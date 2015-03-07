@@ -68,5 +68,9 @@ namespace WaiMai.DAL
         {
             get { return new R_User_RoleRepository(); }
         }
+		        public IDAL.IShopRepository ShopRepository
+        {
+            get { return new ShopRepository(); }
+        }
 		}
 }

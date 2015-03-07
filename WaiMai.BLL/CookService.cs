@@ -13,12 +13,21 @@ namespace WaiMai.BLL
 {
     public partial class CookInfoService : BaseService<CookInfo>, ICookInfoService
     {
-        public PagedResult<CookInfo> Search(CookQuery cookSelect)
+        public PagedResult<CookInfo> Search(CookQuery query)
         {
             int tt = 0;
-           var result=  _DbSession.CookInfoRepository.LoadPageEntities(cookSelect.PageIndex, cookSelect.PageSize, out tt,
-                t => t.Name.Contains(cookSelect.Name), true, s => s.Name);
-            return new PagedResult<CookInfo>(result.ToList(),tt);
+            IQueryable<CookInfo> result = null;
+            if (string.IsNullOrEmpty(query.Name))
+            {
+                result = _DbSession.CookInfoRepository.LoadPageEntities(query.PageIndex, query.PageSize, out tt,
+                    t => true, true, s => s.Name);
+            }
+            else
+            {
+                result = _DbSession.CookInfoRepository.LoadPageEntities(query.PageIndex, query.PageSize, out tt,
+                 t => t.Name.Contains(query.Name), true, s => s.Name);
+            }
+            return new PagedResult<CookInfo>(result.ToList(), tt); 
         }
     }
 }

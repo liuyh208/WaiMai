@@ -53,5 +53,8 @@ namespace WaiMai.IDAL
 		   //每个表对应的实体仓储对象
         IDAL.IR_User_RoleRepository R_User_RoleRepository { get; }
 
+		   //每个表对应的实体仓储对象
+        IDAL.IShopRepository ShopRepository { get; }
+
 		}
 }

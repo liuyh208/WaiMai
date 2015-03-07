@@ -134,6 +134,7 @@
           <Property Name="Address" Type="nvarchar" MaxLength="254" />
           <Property Name="merit" Type="nvarchar" MaxLength="254" />
           <Property Name="Remarks" Type="nvarchar" MaxLength="254" />
+          <Property Name="ShopId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="MenuGroup">
           <Key>
@@ -246,6 +247,17 @@
           <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="254" />
+          <Property Name="Address" Type="nvarchar" MaxLength="254" />
+          <Property Name="Linker" Type="nvarchar" MaxLength="10" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="254" />
         </EntityType>
         <Association Name="FK__R_Group_P__BaseP__182C9B23">
           <End Role="BasePermission" Type="Self.BasePermission" Multiplicity="1" />
@@ -405,6 +417,7 @@
           <EntitySet Name="R_Role_Permission" EntityType="Self.R_Role_Permission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_User_Permission" EntityType="Self.R_User_Permission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_User_Role" EntityType="Self.R_User_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__R_Group_P__BaseP__182C9B23" Association="Self.FK__R_Group_P__BaseP__182C9B23">
             <End Role="BasePermission" EntitySet="BasePermission" />
             <End Role="R_Group_Permission" EntitySet="R_Group_Permission" />
@@ -520,6 +533,7 @@
           <EntitySet Name="MenuGroup" EntityType="DataModel.MenuGroup" />
           <EntitySet Name="MenuInfo" EntityType="DataModel.MenuInfo" />
           <EntitySet Name="CookInfo" EntityType="DataModel.CookInfo" />
+          <EntitySet Name="Shop" EntityType="DataModel.Shop" />
         </EntityContainer>
         <EntityType Name="BaseUser">
           <Key>
@@ -943,6 +957,18 @@
           <Property Name="Address" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
           <Property Name="merit" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
           <Property Name="Remarks" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="ShopId" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="Linker" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1194,12 +1220,25 @@
           <EntitySetMapping Name="CookInfo">
             <EntityTypeMapping TypeName="DataModel.CookInfo">
               <MappingFragment StoreEntitySet="CookInfo">
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="merit" ColumnName="merit" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Telephone" ColumnName="Telephone" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shop">
+            <EntityTypeMapping TypeName="DataModel.Shop">
+              <MappingFragment StoreEntitySet="Shop">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Linker" ColumnName="Linker" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

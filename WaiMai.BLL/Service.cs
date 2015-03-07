@@ -117,4 +117,12 @@ namespace WaiMai.BLL
             CurrentRepository = _DbSession.R_User_RoleRepository;
         }
 	}
+	 public partial class ShopService : BaseService<Shop>, IShopService
+    {
+		//只要想操作数据库，我们只要拿到DbSession就行
+        public override void SetCurrentRepository()
+        {
+            CurrentRepository = _DbSession.ShopRepository;
+        }
+	}
 }

@@ -140,6 +140,7 @@
     <Compile Include="Controllers\OrderManagerController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -605,6 +606,7 @@
     <Content Include="Views\UserInfo\Index2.cshtml" />
     <Content Include="Views\OrderManager\Start.cshtml" />
     <Content Include="Views\Cook\Index.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

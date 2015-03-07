@@ -72,4 +72,9 @@ namespace WaiMai.IDAL
      
     }
 
+	    public partial interface IShopRepository : IBaseRepository<Shop>
+    {
+     
+    }
+
 }

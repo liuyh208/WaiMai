@@ -36,6 +36,8 @@ namespace WaiMai.IBLL
         /// <returns>返回是否成功，如果成功，返回true，负责返回false</returns>
         bool DeleteEntity(T entity);
 
+        bool DeleteEntity(Expression<Func<T, bool>> whereLambda);
+
         /// <summary>
         /// 实现对数据库的查询  --简单查询
         /// </summary>

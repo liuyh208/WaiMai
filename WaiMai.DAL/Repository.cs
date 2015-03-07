@@ -74,4 +74,9 @@ namespace WaiMai.DAL
 
     }
 
+	    public partial class ShopRepository : BaseRepository<Shop>, IShopRepository
+    {
+
+    }
+
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using WaiMai.DAL;
@@ -32,7 +33,17 @@ namespace WaiMai.BLL
         /// <summary>
         /// 子类必须实现
         /// </summary>
-        public abstract void SetCurrentRepository(); 
+        public abstract void SetCurrentRepository();
+
+
+        public bool DeleteEntity(Expression<Func<T, bool>> whereLambda)
+        {
+           bool bl=   CurrentRepository.DeleteEntity(whereLambda);
+           
+           _DbSession.SaveChanges();
+            return bl;
+
+        }
 
         /// <summary>
         /// 实现对数据库的添加功能
@@ -59,7 +70,7 @@ namespace WaiMai.BLL
         }
 
         /// <summary>
-        /// 实现对数据库的修改功能
+        /// 实现对数据库的修改功能 
         /// </summary>
         /// <returns>返回受影响的行数</returns>
         public int UpdateEntity()

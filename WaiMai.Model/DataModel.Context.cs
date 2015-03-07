@@ -38,5 +38,6 @@ namespace WaiMai.Model
         public DbSet<MenuGroup> MenuGroup { get; set; }
         public DbSet<MenuInfo> MenuInfo { get; set; }
         public DbSet<CookInfo> CookInfo { get; set; }
+        public DbSet<Shop> Shop { get; set; }
     }
 }

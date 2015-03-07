@@ -51,4 +51,7 @@ namespace WaiMai.IBLL
 	 public partial interface IR_User_RoleService:IBaseService<R_User_Role>
     {
 	}
+	 public partial interface IShopService:IBaseService<Shop>
+    {
+	}
 }

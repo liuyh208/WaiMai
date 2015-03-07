@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Objects;
 using System.Linq.Expressions;
+using System.Runtime.Remoting.Contexts;
 using WaiMai.Model;
 using System;
 using System.Collections.Generic;
@@ -54,7 +55,11 @@ namespace WaiMai.DAL
             //db.ObjectStateManager.ChangeObjectState(entity, EntityState.Modified);
             //EF5.0的写法
             //db.Set<T>().Attach(entity);
-            _db.Entry<T>(entity).State = EntityState.Detached;
+            var entry = _db.Entry<T>(entity);
+
+            // default
+            entry.State = EntityState.Modified;
+            //_db.Entry<T>(entity).State = EntityState.Detached;
 
             //return db.SaveChanges() > 0;
             return true;
@@ -78,6 +83,15 @@ namespace WaiMai.DAL
             return true;
         }
 
+        public bool DeleteEntity(Expression<Func<T, bool>> whereLambda)
+        {
+            var tb= _db.Set<T>().Where<T>(whereLambda);
+            foreach (T t in tb)
+            {
+                _db.Entry<T>(t).State = EntityState.Deleted;
+            }
+            return true;
+        }
         /// <summary>
         /// 实现对数据库的查询  --简单查询
         /// </summary>

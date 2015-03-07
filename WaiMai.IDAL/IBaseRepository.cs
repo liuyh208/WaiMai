@@ -31,6 +31,8 @@ namespace WaiMai.IDAL
         /// <returns></returns>
         bool DeleteEntity(T entity);
 
+        bool DeleteEntity(Expression<Func<T, bool>> whereLambda);
+
         /// <summary>
         /// 实现对数据库的查询  --简单查询
         /// </summary>

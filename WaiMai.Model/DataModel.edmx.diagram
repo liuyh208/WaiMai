@@ -30,6 +30,7 @@
         <EntityTypeShape EntityType="DataModel.MenuGroup" Width="1.5" PointX="6.125" PointY="9.25" />
         <EntityTypeShape EntityType="DataModel.MenuInfo" Width="1.5" PointX="3.625" PointY="9" />
         <EntityTypeShape EntityType="DataModel.CookInfo" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="DataModel.Shop" Width="1.5" PointX="8.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
