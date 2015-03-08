@@ -121,6 +121,7 @@
           <Property Name="ModifirdOn" Type="datetime" />
           <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShopID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="CookInfo">
           <Key>
@@ -586,6 +587,7 @@
           <Property Type="String" Name="ModifiedUserID" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="R_Group_User" Relationship="DataModel.BaseUserR_Group_User" FromRole="BaseUser" ToRole="R_Group_User" />
+          <Property Name="ShopID" Type="Guid" />
         </EntityType>
         <EntityType Name="R_User_Role">
           <Key>
@@ -979,7 +981,8 @@
     <EntitySetMapping Name="BaseUser">
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.BaseUser)">
         <MappingFragment StoreEntitySet="BaseUser">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />

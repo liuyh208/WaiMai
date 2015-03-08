@@ -40,5 +40,7 @@ namespace WaiMai.Common.select
         /// 删除的标致
         /// </summary>
         public int? DeletionStateCod { get; set; }
+
+        public Guid ShopID { get; set; }
     }
 }

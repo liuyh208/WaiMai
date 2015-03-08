@@ -25,9 +25,9 @@
             $('#tbShop').datagrid({   //定位到Table标签，Table标签的ID是test
                 //   UserInfo是控制器，GetAllUserInfos是控制器中获取用户数据的一个Action
                 url: '/Shop/GetAll',   //指向后台的Action来获取当前用户的信息的Json格式的数据
-                title: '店铺',  //标识
+                title: '店铺信息',  //标识
                 //下面的这些属性如果谁不太清楚的话我建议去官方网站去学习或者在群里我们讨论，这里就不说了
-                iconCls: 'icon-save',
+                //iconCls: 'icon-save',
                 fit: true,
                 border:false,
                 nowrap: true,
@@ -231,7 +231,7 @@
         </div>
     @*</fieldset>*@
    
-    <table id="tbShop" data-options="" title="用户操作" iconcls="icon-edit"></table>
+    <table id="tbShop"></table>
 </div>
 
 <!--------------------------添加用户信息的弹出层---------------------------->
@@ -245,9 +245,7 @@
                     <td><label for="txtShopName">店铺名称：</label></td>
                     <td>
                         <input class="easyui-validatebox" type="text" name="Name" data-options="required:true,validType:'length[1,32]'" />
-                    </td>
-                    <td><label for="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：</label></td>
-                   
+                    </td>  
                 </tr>
                 <tr>
                     <td><label for="txtLinker">联系人：</label></td>

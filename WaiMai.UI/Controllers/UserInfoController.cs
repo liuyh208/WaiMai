@@ -42,6 +42,7 @@ namespace WaiMai.UI.Controllers
             //实现对用户分页的查询，rows：一共多少条，page：请求的当前第几页
             int pageIndex = Request["page"] == null ? 1 : int.Parse(Request["page"]);
             int pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);
+            Guid shopID = Request["ShopID"] == null ? Guid.Empty : Guid.Parse(Request["ShopID"]);
             //得到多条件查询的参数
             string RealName = Request["RealName"];
             string Telephone = Request["Telephone"];
@@ -58,6 +59,7 @@ namespace WaiMai.UI.Controllers
             //封装一个业务逻辑层的方法，来处理分页过滤事件
             var userInfoQuery = new UserInfoQuery()
             {
+                ShopID = shopID,
                 PageSize = pageSize,
                 PageIndex = pageIndex,
                 RealName = RealName,
@@ -104,6 +106,7 @@ namespace WaiMai.UI.Controllers
             BaseUser user = Session["UserInfo"] as BaseUser;
             userInfo.CreateUserID = user.Code;   //获取添加此用户的管理者的ID
             userInfo.CreateBy = user.UserName;//获取添加此用户的管理者的名称
+       
             //执行添加用户的代码
             _userInfoService.AddEntity(userInfo);
             return Content("OK");

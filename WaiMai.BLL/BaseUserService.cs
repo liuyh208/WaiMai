@@ -125,7 +125,7 @@ namespace WaiMai.BLL
         /// <returns>返回用户类的IQueryable集合</returns>
         public IQueryable<BaseUser> LoadSearchData(UserInfoQuery query)
         {
-            var temp = _DbSession.BaseUserRepository.LoadEntities(u => true);
+            var temp = _DbSession.BaseUserRepository.LoadEntities(u => u.ShopID==query.ShopID);
             //首先过滤姓名
             if (!string.IsNullOrEmpty(query.RealName))
             {

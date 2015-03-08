@@ -27,6 +27,13 @@ namespace WaiMai.UI.Controllers
             var result = shopService.GetAll(query);
             return JsonDate(result);
         }
+
+        public ActionResult GetShopList()
+        {
+
+           var result= from  s in shopService.LoadEntities(t => true) select  new {s.Id,s.Name};
+            return JsonDate(result);
+        }
        
         //
         // POST: /Shop/Create

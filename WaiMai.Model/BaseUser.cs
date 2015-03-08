@@ -70,6 +70,7 @@ namespace WaiMai.Model
         public Nullable<System.DateTime> ModifirdOn { get; set; }
         public string ModifiedUserID { get; set; }
         public string ModifiedBy { get; set; }
+        public Nullable<System.Guid> ShopID { get; set; }
     
         public virtual ICollection<R_User_Role> R_UserInfo_Role { get; set; }
         public virtual ICollection<R_User_Permission> R_UserInfo_ActionInfo { get; set; }
