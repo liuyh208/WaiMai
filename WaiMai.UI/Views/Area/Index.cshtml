@@ -1,0 +1,395 @@
+﻿@{
+    Layout = null;
+}
+
+
+@*实现对EasyUI的DataGird控件操作的JS代码*@
+<script type="text/javascript">
+    $(function () {
+        initTableArea();
+        BindAddArea();
+        BindUpdateAreaInfo();
+        BindSearchArea();
+        initAreaShopTable();
+    });
+
+    //实现对店铺DataGird控件的绑定操作
+    function initTableArea(queryData) {
+        $("#tb_@ViewBag.Key").datagrid({
+            //定位到Table标签，Table标签的ID是test
+            //   UserInfo是控制器，GetAllUserInfos是控制器中获取用户数据的一个Action
+            url: '/@ViewBag.Controller/GetAll', //指向后台的Action来获取当前用户的信息的Json格式的数据
+            title: '配送区域', //标识
+            //下面的这些属性如果谁不太清楚的话我建议去官方网站去学习或者在群里我们讨论，这里就不说了
+            //iconCls: 'icon-save',
+            fit: true,
+            border: false,
+            nowrap: true,
+            autoRowHeight: false,
+            striped: true,
+            collapsible: false,
+            pagination: true,
+            rownumbers: true,
+            //sortName: 'ID',    //根据某个字段给easyUI排序
+            sortOrder: 'asc',
+            remoteSort: false,
+            queryParams: queryData,
+            idField: 'ID',
+            frozenColumns: [
+                [
+                    { field: 'ckShop', checkbox: true }, //选择
+                    { title: '主键', field: 'ID', width: 40, hidden: true }, //主键
+                    { title: '区域', field: 'BlongTo', width: 100, sortable: true }, //用户名
+                    { title: '详细地址', field: 'Name', width: 120, sortable: true },
+                    { title: '送餐时限(分)', field: 'TimeLimit', width: 160, sortable: true }
+                ]
+            ],
+            toolbar: [
+                {
+                    id: 'btnadd',
+                    text: '添加',
+                    iconCls: 'icon-add',
+                    handler: function () {
+                        $("#divAdd_@ViewBag.Key").dialog('open').dialog('setTitle', '添加配送区域');
+                    }
+                }, '-', {
+                    id: 'btncut',
+                    text: '修改',
+                    iconCls: 'icon-cut',
+                    handler: function () {
+                        //实现修改的方法
+                        UpdateAreaInfo();
+                    }
+
+                }, '-', {
+                    id: 'btnCancle',
+                    text: '删除',
+                    iconCls: 'icon-remove',
+                    handler: function () {
+                        //实现直接删除所有数据的方法
+                        deleteAreaInfo();
+                    }
+                }, '-', {
+                    id: 'btnreload',
+                    text: '刷新',
+                    iconCls: 'icon-reload',
+                    handler: function () {
+                        $("#tb_@ViewBag.Key").datagrid("reload");
+                    }
+                }
+            ]
+        });
+    }
+
+    //实现店铺的添加
+    function BindAddArea() {
+        $("#btnAdd_@ViewBag.Key").click(function () {
+            //判断用户的信息是否通过验证
+            var validate = $("#frmAdd_@ViewBag.Key").form('validate');
+            if (validate == false) {
+                return false;
+            }
+
+
+            //获取需要传递的参数传递给前台
+            var postData = $("#frmAdd_@ViewBag.Key").serializeArray();
+
+            //发送异步请求到后台保存用户数据
+            $.post("/@ViewBag.Controller/Create", postData, function (data) {
+                if (data = "OK") {
+                    //添加成功  1.关闭弹出层，2.刷新DataGird
+                    alert("添加区域成功");
+                    $("#divAdd_@ViewBag.Key").dialog("close");
+                    $("#tb_@ViewBag.Key").datagrid("reload");
+                    $("#frmAdd_@ViewBag.Key").form("clear");
+                } else {
+                    alert("添加菜品失败，请您检查");
+                }
+            });
+        });
+    }
+
+    //实现直接删除数据和伪删除数据的方法
+    function deleteAreaInfo() {
+        //得到用户选择的数据的ID
+        var rows = $("#tb_@ViewBag.Key").datagrid("getSelections");
+        //首先判断用户是否已经选择了需要删除的数据,然后循环将用户选择的数据传递到后台
+        if (rows.length >= 1) {
+            //遍历出用户选择的数据的信息，这就是用户用户选择删除的用户ID的信息
+            var ids = ""; //1,2,3,4,5
+            for (var i = 0; i < rows.length; i++) {
+                //异步将删除的ID发送到后台，后台删除之后，返回前台，前台刷洗表格
+                ids += rows[i].ID + ",";
+            }
+            //最后去掉最后的那一个,
+            ids = ids.substring(0, ids.length - 1);
+            //获取用户选择的用户信息，如果用户选择了已经登录的用户的话需要给出不能删除的信息
+            var roleNames = "";
+            for (var i = 0; i < rows.length; i++) {
+                roleNames += rows[i].Name + ",";
+            }
+            roleNames = roleNames.substring(0, roleNames.length - 1);
+            //首先取出来到底是直接删除还是伪删除发送异步请求的地址和是否是伪删除的参数
+
+            //然后确认发送异步请求的信息到后台删除数据
+            $.messager.confirm("删除信息", "您确认删除<font color='red' size='3'>" + roleNames + "</font> 菜品吗？", function (DeleteRole) {
+                if (DeleteRole) {
+                    $.post("/@ViewBag.Controller/Delete", { ID: ids }, function (data) {
+                        if (data == "OK") {
+                            //友情提示用户删除成功，刷新表格
+                            $.messager.alert("友情提示", "删除/成功");
+                            $("#tb_@ViewBag.Key").datagrid("reload");
+                            //当删除完成之后，第二次删除的时候还记得上次的信息，这样是不可以的，所以我们需要清除第一次的信息
+                            //第一种方法
+                            rows.length = "";
+                            //第二种方法
+                            $("#tb_@ViewBag.Key").datagrid("clearSelections");
+                        } else {
+                            $.messager.alert("友情提示", data);
+                        }
+                    });
+                }
+            });
+        } else {
+            alert("请选择你要删除的数据");
+        }
+    }
+
+    //修改用户的信息
+    function UpdateAreaInfo() {
+        //首先取出来用户选择的数据的ID
+        var rows = $("#tb_@ViewBag.Key").datagrid("getSelections");
+        //首先取出来值判断用户只能选择一个
+        if (rows.length != 1) {
+            $.messager.alert("友情提示", "每次只能修改/浏览一条，你已经选择了<font color='red'>" + rows.length + "</font>条", "error");
+            return;
+        }
+        //处理修改的信息，弹出修改的对话框,然后显示选择的用户的详细信息
+        $("#divEdit_@ViewBag.Key").dialog('open').dialog('setTitle', '修改配送区域');
+        var row = $("#tb_@ViewBag.Key").datagrid('getSelected');
+        $('#frmEdit_@ViewBag.Key').form('load', row);
+
+    }
+
+
+    //修改用户的相信信息
+    function BindUpdateAreaInfo() {
+        $("#btnEdit_@ViewBag.Key").click(function () {
+            //首先也是对用户进行检测
+            var validate = $("#frmEdit_@ViewBag.Key").form("validate");
+            if (validate == false) {
+                return false;
+            }
+            //构造参数发送给后台
+            var posData = $("#frmEdit_@ViewBag.Key").serializeArray();
+            $.post("/@ViewBag.Controller/Edit", posData, function (date) {
+                if (date == "OK") {
+                    //修改成功，关闭弹出层，刷新DataGird
+                    alert("修改成功");
+                    $("#divEdit_@ViewBag.Key").dialog('close');
+                    $("#tb_@ViewBag.Key").datagrid("reload");
+                } else {
+                    $.messager.alert("友情提示", "修改失败，请您检查");
+                }
+            });
+        });
+    }
+
+    //绑定搜索按钮的的点击事件
+    function BindSearchArea() {
+        //按条件进行查询数据，首先我们得到数据的值
+        $("#btnSearch_@ViewBag.Key").click(function () {
+            //得到用户输入的参数
+            SearchAreaInfo();
+        });
+    }
+
+    function SearchAreaInfo() {
+        var queryData = {
+            BlongTo: $("#txtAreaName").val(),
+            ShopID: $("#hAreaShopID").val()
+        }
+        //将值传递给
+        initTableArea(queryData);
+        return false;
+    }
+
+    function initAreaShopTable() {
+        $('#tbshop_@ViewBag.Key').datagrid({
+            //定位到Table标签，Table标签的ID是test
+            //   UserInfo是控制器，GetAllUserInfos是控制器中获取用户数据的一个Action
+            url: '/Shop/GetShopList',
+            nowrap: true,
+            autoRowHeight: false,
+            singleSelect: true,
+            fitColumns: true,
+            striped: true,
+            rownumbers: true,
+            sortName: 'Name', //根据某个字段给easyUI排序
+            sortOrder: 'asc',
+            remoteSort: false,
+            idField: 'Id',
+            frozenColumns: [
+                [
+                    { title: '主键', field: 'Id', width: 40, hidden: true }, //主键
+                    { title: '店铺名称', field: 'Name', width: 190, sortable: true } //登录名
+                ]
+            ],
+            onLoadSuccess: function (data) {
+                $('#tbshop_@ViewBag.Key').datagrid("selectRow", 0);
+            },
+            onSelect: function (index, row) {
+
+                $('#hAreaShopID').val(row.Id);
+                $('#hAreaShopID2').val(row.Id);
+          
+                SearchAreaInfo();
+            }
+        });
+    }
+
+    
+
+</script>
+
+<!-----------------------EasyUI的DataGird控件的放置----------------------->
+
+<div class="easyui-layout" data-options="fit:true,collapsible:false,border:false">
+    <div data-options="region:'west',split:true" title="店铺" style="width: 200px; padding: 1px; overflow: hidden;">
+        <table id="tbshop_@ViewBag.Key"></table>
+    </div>
+
+    <div data-options="region:'center',fit:true,border:false">
+        <!-------------------------------搜索框----------------------------------->
+        <div class="easyui-layout" data-options="fit:true,collapsible:false,border:false">
+            <div data-options="region:'north',collapsible:false,border:false">
+
+                <label for="txtAreaName">所属区域：</label>
+                <input type="text" id="txtAreaName" />
+
+                <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch_@ViewBag.Key">模糊搜索</a>
+
+            </div>
+            <div data-options="region:'center',fit:true,collapsible:false,border:false">
+                <table id="tb_@ViewBag.Key"></table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!--------------------------添加用户信息的弹出层---------------------------->
+<div id="divAdd_@ViewBag.Key" class="easyui-dialog" style="padding: 5px 5px; width: 500px;"
+     closed="true" resizable="true" modal="true" buttons="#dlg-buttons">
+    <form id="frmAdd_@ViewBag.Key" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>配送区域</legend>
+            <input id="hAreaShopID2" name="ShopID" type="hidden" />
+            <table>
+                <tr>
+                    <td><label for="FoodType">所属区域：</label></td>
+                    <td colspan="3">
+                        <input class="easyui-combobox" id="cmbfoodtype" name="BlongTo"
+                               data-options="required:true,
+                        url:'/SysDic/GetSysDic?category=foodtype',
+                        method: 'get',
+                        valueField: 'Text',
+                        textField: 'Text',
+                        panelHeight:'auto'" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="Price">详细地址：</label></td>
+                    <td colspan="3">
+                        <input class="easyui-validatebox" type="text" style="width: 360px" name="Name" data-options="required:true" />
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td><label for="SaleType">时间限制：</label></td>
+                    <td>
+                        <input class="easyui-numberbox" type="text" style="width: 50px" name="TimeLimit" />分钟
+                    </td>
+                    <td><label for="Enable">是否可用：</label></td>
+                    <td >
+                        <input type="checkbox" name="Enable" value="true" />
+                    </td>
+                </tr>
+               
+                <tr>
+                    
+
+                    
+                </tr>
+                
+                
+              
+                <tr>
+                    <td colspan="4" style="text-align: center; padding-top: 10px">
+                        <a href="javascript:void(0)" class="easyui-linkbutton" id="btnAdd_@ViewBag.Key" iconcls="icon-ok">确定</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick=" javascript: $('#divAdd_@ViewBag.Key').dialog('close') ">关闭</a>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+    </form>
+</div>
+
+<!------------------------弹出修改店铺信息的弹出层---------------------------------->
+<div id="divEdit_@ViewBag.Key" class="easyui-dialog" style="padding: 10px 10px"
+     closed="true" resizable="true" modal="true" buttons="#dlg-buttons">
+    <form id="frmEdit_@ViewBag.Key" method="post" novalidate="novalidate">
+        <fieldset>
+            <legend>店铺信息的修改</legend>
+            <input name="ID" type="hidden" />
+            <input id="hAreaShopID" name="ShopID" type="hidden" />
+            <table>
+                <tr>
+                    <td><label for="FoodType">所属区域：</label></td>
+                    <td colspan="3">
+                        <input class="easyui-combobox" id="cmbfoodtype" name="BlongTo"
+                               data-options="required:true,
+                        url:'/SysDic/GetSysDic?category=foodtype',
+                        method: 'get',
+                        valueField: 'Text',
+                        textField: 'Text',
+                        panelHeight:'auto'" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="Price">详细地址：</label></td>
+                    <td colspan="3">
+                        <input class="easyui-validatebox" type="text" style="width: 360px" name="Name" data-options="required:true" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td><label for="SaleType">时间限制：</label></td>
+                    <td>
+                        <input class="easyui-numberbox" type="text" style="width: 50px" name="TimeLimit" />分钟
+                    </td>
+                    <td><label for="Enable">是否可用：</label></td>
+                    <td>
+                        <input type="checkbox" name="Enable" value="true" />
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="4" style="text-align: center; padding-top: 10px">
+                        <a href="javascript:void(0)" class="easyui-linkbutton" id="btnEdit_@ViewBag.Key" iconcls="icon-ok">确定</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick=" javascript:$('#divEdit_@ViewBag.Key').dialog('close') ">关闭</a>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+    </form>
+</div>
+
+

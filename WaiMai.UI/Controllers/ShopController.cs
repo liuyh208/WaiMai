@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using WaiMai.BLL;
+using WaiMai.Common;
 using WaiMai.IBLL;
 using WaiMai.IBLL.Query;
 using WaiMai.Model;
+using WaiMai.UI.Models;
 
 namespace WaiMai.UI.Controllers
 {
@@ -27,7 +30,10 @@ namespace WaiMai.UI.Controllers
         {
             var query = new ShopQuery(Request);
             var result = shopService.GetAll(query);
-            return JsonDate(result);
+
+            var r = Mapper.Map<IEnumerable<Shop>, IEnumerable<ShopDto>>(result.rows);
+
+            return JsonDate(new PagedResult<ShopDto>(r,result.total));
         }
 
         public ActionResult GetShopList()
