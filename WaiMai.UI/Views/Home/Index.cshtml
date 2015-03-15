@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+  
 }
 
 <!DOCTYPE html>
@@ -19,15 +20,15 @@
     
     <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css">
     @*执行JavaScript的脚本*@
-    <script>    
+    <script>
         $(function () {
+
             //读取动态变化的时间
             ReadDateTimeShow();
             //绑定菜单按钮的点击事件
 
             BindMenuClickEvent2();
             //这里实现对时间动态的变化
-            var setTimeInterval = setInterval(ReadDateTimeShow, 1000);
 
             //Tab页签的实现
             $("#worktab").tabs({});
@@ -35,7 +36,7 @@
         });
 
         //绑定菜单按钮的点击事件  MenuLink
-  
+
         //读取动态变化的时间
         function ReadDateTimeShow() {
             var year = new Date().getFullYear();
@@ -48,16 +49,16 @@
 
         function BindMenuClickEvent2() {
             $(".MenuLink").click(function () {
-                 
+
                 //获取按钮里面的src属性
-               
+
                 //得到节点的名字来放去Title
                 var title = $(this).text();
 
                 //拼接一个Iframe标签
                 var str = $(this).attr("src");
                 var ico = $(this).attr("ico");
-                
+
                 if (str==undefined) {
                     $.messager.alert('提示', '正在玩命开发中……', 'info');
                     return;
@@ -80,6 +81,15 @@
                 }
             });
         }
+
+        function doddd() {
+            @foreach (string s in Model)
+            {
+                
+            }
+            var n="@ViewBag.List";
+            alert(n);
+        }
     </script>
 </head>
 <body class="easyui-layout">
@@ -98,9 +108,9 @@
                 <td style="width: 10px;"></td>
                 <td style="font-size: 28px; font-weight: bold; vertical-align: middle;">外卖订单管理系统<span style="font-size:medium">(中关村店)</span></td>
                 <td style="width: auto;"></td>
-                <td id="tdlogin" style="text-align: right; width: 100px;"><b>欢迎你 @User.Identity.Name</b></td>
+                <td id="tdlogin" style="text-align: right; width: 100px;"><b>欢迎你 @ViewBag.UserName</b></td>
 
-                <td id="tdExit" style="text-align: center; width: 50px;"><a href="../Account/logout" class="easyui-linkbutton" data-options="plain:true"><i class="fa fa-power-off fa-2x"></i></a> </td>
+                <td id="tdExit" style="text-align: center; width: 50px;"><a onclick="doddd();" class="easyui-linkbutton" data-options="plain:true"><i class="fa fa-power-off fa-2x"></i></a> </td>
                 <td style="width: 30px;"></td>
             </tr>
         </table>

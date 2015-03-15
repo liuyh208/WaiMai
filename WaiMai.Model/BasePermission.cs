@@ -16,17 +16,9 @@ namespace WaiMai.Model
     {
         public BasePermission()
         {
-            this.RequestURL = "";
-            this.RequestHttpType = 0;
-            this.AllowEdit = 1;
-            this.AllowDelete = 1;
-            this.IsVisible = 1;
-            this.DeletionStateCode = 0;
-            this.Enabled = 1;
-            this.ActionType = 0;
-            this.R_UserInfo_ActionInfo = new HashSet<R_User_Permission>();
-            this.R_Role_Permission = new HashSet<R_Role_Permission>();
             this.R_Group_Permission = new HashSet<R_Group_Permission>();
+            this.R_Role_Permission = new HashSet<R_Role_Permission>();
+            this.R_User_Permission = new HashSet<R_User_Permission>();
         }
     
         public int ID { get; set; }
@@ -49,8 +41,8 @@ namespace WaiMai.Model
         public string ModifiedBy { get; set; }
         public short ActionType { get; set; }
     
-        public virtual ICollection<R_User_Permission> R_UserInfo_ActionInfo { get; set; }
-        public virtual ICollection<R_Role_Permission> R_Role_Permission { get; set; }
         public virtual ICollection<R_Group_Permission> R_Group_Permission { get; set; }
+        public virtual ICollection<R_Role_Permission> R_Role_Permission { get; set; }
+        public virtual ICollection<R_User_Permission> R_User_Permission { get; set; }
     }
 }

@@ -21,7 +21,16 @@ namespace WaiMai.UI.Controllers
                 ViewBag.UserName = user.RealName;
             }
 
-            return View();
+            var lst = new List<string>();
+            lst.Add("vvv1");
+            lst.Add("vvv2");
+
+            return View(lst);
+        }
+
+        public string SS()
+        {
+            return "it is from asp.net";
         }
 
         public ActionResult Menus()

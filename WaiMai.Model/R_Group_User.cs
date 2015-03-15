@@ -26,7 +26,7 @@ namespace WaiMai.Model
         public int BaseUserID { get; set; }
         public int BasePermissionGroupID { get; set; }
     
-        public virtual BaseUser BaseUser { get; set; }
         public virtual BasePermissionGroup BasePermissionGroup { get; set; }
+        public virtual BaseUser BaseUser { get; set; }
     }
 }

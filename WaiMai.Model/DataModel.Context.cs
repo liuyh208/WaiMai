@@ -25,19 +25,32 @@ namespace WaiMai.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<BaseUser> BaseUser { get; set; }
-        public DbSet<R_User_Role> R_User_Role { get; set; }
-        public DbSet<BaseRole> BaseRole { get; set; }
+        public DbSet<FoodInfo> FoodInfo { get; set; }
+        public DbSet<Address> Address { get; set; }
+        public DbSet<AreaInfo> AreaInfo { get; set; }
         public DbSet<BasePermission> BasePermission { get; set; }
-        public DbSet<R_User_Permission> R_User_Permission { get; set; }
-        public DbSet<R_Role_Permission> R_Role_Permission { get; set; }
         public DbSet<BasePermissionGroup> BasePermissionGroup { get; set; }
-        public DbSet<R_Group_Permission> R_Group_Permission { get; set; }
-        public DbSet<R_Group_User> R_Group_User { get; set; }
-        public DbSet<R_Group_Role> R_Group_Role { get; set; }
+        public DbSet<BaseRole> BaseRole { get; set; }
+        public DbSet<BaseUser> BaseUser { get; set; }
+        public DbSet<CookInfo> CookInfo { get; set; }
+        public DbSet<CouponUseInfo> CouponUseInfo { get; set; }
+        public DbSet<CourierInfo> CourierInfo { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<CustomerMessage> CustomerMessage { get; set; }
+        public DbSet<LimitTime> LimitTime { get; set; }
         public DbSet<MenuGroup> MenuGroup { get; set; }
         public DbSet<MenuInfo> MenuInfo { get; set; }
-        public DbSet<CookInfo> CookInfo { get; set; }
+        public DbSet<OrderDelivery> OrderDelivery { get; set; }
+        public DbSet<OrderInfo> OrderInfo { get; set; }
+        public DbSet<OrderItem> OrderItem { get; set; }
+        public DbSet<OrderProblem> OrderProblem { get; set; }
+        public DbSet<R_Group_Permission> R_Group_Permission { get; set; }
+        public DbSet<R_Group_Role> R_Group_Role { get; set; }
+        public DbSet<R_Group_User> R_Group_User { get; set; }
+        public DbSet<R_Role_Permission> R_Role_Permission { get; set; }
+        public DbSet<R_User_Permission> R_User_Permission { get; set; }
+        public DbSet<R_User_Role> R_User_Role { get; set; }
         public DbSet<Shop> Shop { get; set; }
+        public DbSet<Sys_DicInfo> Sys_DicInfo { get; set; }
     }
 }

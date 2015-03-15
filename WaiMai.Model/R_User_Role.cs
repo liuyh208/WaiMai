@@ -14,11 +14,6 @@ namespace WaiMai.Model
     
     public partial class R_User_Role
     {
-        public R_User_Role()
-        {
-            this.CreateBy = "50";
-        }
-    
         public int ID { get; set; }
         public int UserID { get; set; }
         public int RoleID { get; set; }
@@ -29,7 +24,7 @@ namespace WaiMai.Model
         public string ModifiedUserID { get; set; }
         public string ModifiedBy { get; set; }
     
-        public virtual BaseUser UserInfo { get; set; }
-        public virtual BaseRole Role { get; set; }
+        public virtual BaseRole BaseRole { get; set; }
+        public virtual BaseUser BaseUser { get; set; }
     }
 }

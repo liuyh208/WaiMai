@@ -14,11 +14,28 @@ namespace WaiMai.Model
     
     public partial class Shop
     {
+        public Shop()
+        {
+            this.AreaInfo = new HashSet<AreaInfo>();
+            this.CookInfo = new HashSet<CookInfo>();
+            this.CourierInfo = new HashSet<CourierInfo>();
+            this.FoodInfo = new HashSet<FoodInfo>();
+            this.LimitTime = new HashSet<LimitTime>();
+            this.OrderInfo = new HashSet<OrderInfo>();
+        }
+    
         public System.Guid Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Linker { get; set; }
         public string Telephone { get; set; }
         public string Remarks { get; set; }
+    
+        public virtual ICollection<AreaInfo> AreaInfo { get; set; }
+        public virtual ICollection<CookInfo> CookInfo { get; set; }
+        public virtual ICollection<CourierInfo> CourierInfo { get; set; }
+        public virtual ICollection<FoodInfo> FoodInfo { get; set; }
+        public virtual ICollection<LimitTime> LimitTime { get; set; }
+        public virtual ICollection<OrderInfo> OrderInfo { get; set; }
     }
 }

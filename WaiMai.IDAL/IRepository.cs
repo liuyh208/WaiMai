@@ -7,6 +7,16 @@ namespace WaiMai.IDAL
 {
 
 	//在这里需要一个for循环来遍历数据库中所有的表放置在下面即可，这样就实现了所有的表对应的仓储显示出来了。
+	    public partial interface IAddressRepository : IBaseRepository<Address>
+    {
+     
+    }
+
+	    public partial interface IAreaInfoRepository : IBaseRepository<AreaInfo>
+    {
+     
+    }
+
 	    public partial interface IBasePermissionRepository : IBaseRepository<BasePermission>
     {
      
@@ -32,12 +42,62 @@ namespace WaiMai.IDAL
      
     }
 
+	    public partial interface ICouponUseInfoRepository : IBaseRepository<CouponUseInfo>
+    {
+     
+    }
+
+	    public partial interface ICourierInfoRepository : IBaseRepository<CourierInfo>
+    {
+     
+    }
+
+	    public partial interface ICustomerRepository : IBaseRepository<Customer>
+    {
+     
+    }
+
+	    public partial interface ICustomerMessageRepository : IBaseRepository<CustomerMessage>
+    {
+     
+    }
+
+	    public partial interface IFoodInfoRepository : IBaseRepository<FoodInfo>
+    {
+     
+    }
+
+	    public partial interface ILimitTimeRepository : IBaseRepository<LimitTime>
+    {
+     
+    }
+
 	    public partial interface IMenuGroupRepository : IBaseRepository<MenuGroup>
     {
      
     }
 
 	    public partial interface IMenuInfoRepository : IBaseRepository<MenuInfo>
+    {
+     
+    }
+
+	    public partial interface IOrderDeliveryRepository : IBaseRepository<OrderDelivery>
+    {
+     
+    }
+
+	    public partial interface IOrderInfoRepository : IBaseRepository<OrderInfo>
+    {
+     
+    }
+
+	    public partial interface IOrderItemRepository : IBaseRepository<OrderItem>
+    {
+     
+    }
+
+	    public partial interface IOrderProblemRepository : IBaseRepository<OrderProblem>
     {
      
     }
@@ -73,6 +133,11 @@ namespace WaiMai.IDAL
     }
 
 	    public partial interface IShopRepository : IBaseRepository<Shop>
+    {
+     
+    }
+
+	    public partial interface ISys_DicInfoRepository : IBaseRepository<Sys_DicInfo>
     {
      
     }

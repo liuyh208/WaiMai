@@ -274,7 +274,7 @@ namespace WaiMai.UI.Controllers
             ViewBag.AllRoles = allRoles;
             //往前台传递用户已经关联了的角色信息
             if (currentSetRoleUser != null)
-                ViewBag.ExtIsRoleIDS = (from r in currentSetRoleUser.R_UserInfo_Role
+                ViewBag.ExtIsRoleIDS = (from r in currentSetRoleUser.R_User_Role
                                         //当前用户和角色中间表的集合数据
                                         select r.RoleID).ToList();
             return View();

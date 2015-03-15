@@ -1,0 +1,868 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="20" />
+    <Property Name="CustomerID" Type="uniqueidentifier" />
+    <Property Name="AreaID" Type="uniqueidentifier" />
+    <Property Name="AreaName" Type="nvarchar" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsDefault" Type="bit" />
+    <Property Name="Enable" Type="bit" />
+  </EntityType>
+  <EntityType Name="AreaInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="10" />
+    <Property Name="PIndex" Type="int" />
+    <Property Name="BlongTo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShopID" Type="uniqueidentifier" />
+    <Property Name="Enable" Type="bit" />
+    <Property Name="TimeLimit" Type="int" />
+  </EntityType>
+  <EntityType Name="BasePermission">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="RequestURL" Type="varchar" MaxLength="256" />
+    <Property Name="RequestHttpType" Type="int" />
+    <Property Name="PerMission" Type="nvarchar" MaxLength="50" />
+    <Property Name="AllowEdit" Type="int" />
+    <Property Name="AllowDelete" Type="int" />
+    <Property Name="IsVisible" Type="int" />
+    <Property Name="SortCode" Type="int" />
+    <Property Name="DeletionStateCode" Type="smallint" />
+    <Property Name="Enabled" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="800" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ActionType" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BasePermissionGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GroupType" Type="smallint" Nullable="false" />
+    <Property Name="AllowEdit" Type="int" />
+    <Property Name="AllowDelete" Type="int" />
+    <Property Name="IsVisible" Type="int" />
+    <Property Name="SortCode" Type="int" />
+    <Property Name="DeletionStateCode" Type="smallint" />
+    <Property Name="Enabled" Type="int" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="800" />
+  </EntityType>
+  <EntityType Name="BaseRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizeId" Type="int" />
+    <Property Name="CategoryCode" Type="int" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Realname" Type="nvarchar" MaxLength="100" />
+    <Property Name="AllowEdit" Type="int" />
+    <Property Name="AllowDelete" Type="int" />
+    <Property Name="IsVisible" Type="int" />
+    <Property Name="SortCode" Type="int" />
+    <Property Name="DeletionStateCode" Type="int" />
+    <Property Name="Enabled" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="800" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BaseUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="32" />
+    <Property Name="UserPassword" Type="nvarchar" MaxLength="200" />
+    <Property Name="RealName" Type="nvarchar" MaxLength="50" />
+    <Property Name="QuickQuery" Type="nvarchar" MaxLength="100" />
+    <Property Name="SecurityLevel" Type="int" />
+    <Property Name="UserFrom" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubCompanyID" Type="int" />
+    <Property Name="SubCompanyName" Type="nvarchar(max)" />
+    <Property Name="DepartmentID" Type="int" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkgroupID" Type="int" />
+    <Property Name="WorkgroupName" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkCategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChangePasswordDate" Type="datetime" />
+    <Property Name="Duty" Type="nvarchar" MaxLength="50" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="8" />
+    <Property Name="Birthday" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="32" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="32" />
+    <Property Name="QICQ" Type="nvarchar" MaxLength="50" />
+    <Property Name="HomeAddress" Type="nvarchar" MaxLength="200" />
+    <Property Name="Theme" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsStaff" Type="int" />
+    <Property Name="IsVisible" Type="int" />
+    <Property Name="UserAddRessID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Enabled" Type="int" />
+    <Property Name="AuditStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeletionStateCode" Type="int" />
+    <Property Name="Signature" Type="nvarchar" MaxLength="200" />
+    <Property Name="SortCode" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="800" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifirdOn" Type="datetime" />
+    <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShopID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="CookInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Sex" Type="bit" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Birthday" Type="date" />
+    <Property Name="Address" Type="nvarchar" MaxLength="254" />
+    <Property Name="merit" Type="nvarchar" MaxLength="254" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="254" />
+    <Property Name="ShopId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="CouponUseInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GetPath" Type="varchar" MaxLength="20" />
+    <Property Name="CustomerID" Type="uniqueidentifier" />
+    <Property Name="OrderID" Type="uniqueidentifier" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="CouponNum" Type="int" />
+    <Property Name="Used" Type="int" />
+    <Property Name="Money" Type="int" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="CourierInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="10" />
+    <Property Name="ShopID" Type="uniqueidentifier" />
+    <Property Name="ImagePath" Type="nvarchar" MaxLength="254" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Enable" Type="bit" />
+    <Property Name="IsSecond" Type="bit" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Coupon" Type="int" />
+    <Property Name="WeiXinID" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Sex" Type="bit" />
+    <Property Name="BirthDay" Type="datetime" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="254" />
+  </EntityType>
+  <EntityType Name="CustomerMessage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CustomerID" Type="uniqueidentifier" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Text" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="FoodInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShopID" Type="uniqueidentifier" />
+    <Property Name="Price" Type="float" />
+    <Property Name="CategoryID" Type="uniqueidentifier" />
+    <Property Name="SaleType" Type="uniqueidentifier" />
+    <Property Name="SupplyDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsPreferential" Type="bit" />
+    <Property Name="PIndex" Type="int" />
+    <Property Name="Enable" Type="bit" />
+    <Property Name="Visible" Type="bit" />
+    <Property Name="Image" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="200" />
+    <Property Name="Remarks1" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="LimitTime">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ShopID" Type="uniqueidentifier" />
+    <Property Name="Time" Type="nvarchar" MaxLength="10" />
+    <Property Name="LimitNum" Type="int" />
+  </EntityType>
+  <EntityType Name="MenuGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" MaxLength="100" />
+    <Property Name="POrder" Type="int" />
+    <Property Name="Enabled" Type="bit" />
+  </EntityType>
+  <EntityType Name="MenuInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" MaxLength="100" />
+    <Property Name="POrder" Type="int" />
+    <Property Name="Enabled" Type="bit" />
+    <Property Name="GroupID" Type="uniqueidentifier" />
+    <Property Name="Url" Type="nvarchar" MaxLength="254" />
+    <Property Name="Ico" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="OrderDelivery">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OrderID" Type="uniqueidentifier" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="ShopID" Type="uniqueidentifier" />
+    <Property Name="CustomerID" Type="uniqueidentifier" />
+    <Property Name="DeliveryTime" Type="datetime" />
+    <Property Name="CourierID" Type="uniqueidentifier" />
+    <Property Name="IsSecondDelivery" Type="bit" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="20" />
+    <Property Name="ShopID" Type="uniqueidentifier" />
+    <Property Name="OrderTime" Type="datetime" />
+    <Property Name="OrderStatus" Type="int" />
+    <Property Name="CustomerID" Type="uniqueidentifier" />
+    <Property Name="CustomerTel" Type="nvarchar" MaxLength="20" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="20" />
+    <Property Name="Source" Type="nvarchar" MaxLength="20" />
+    <Property Name="Total" Type="float" />
+    <Property Name="RealTotal" Type="float" />
+    <Property Name="IsProblem" Type="bit" />
+    <Property Name="IsSale" Type="bit" />
+    <Property Name="RequireTime" Type="datetime" />
+    <Property Name="Valid" Type="bit" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="254" />
+    <Property Name="Invoice" Type="bit" />
+  </EntityType>
+  <EntityType Name="OrderItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OrderID" Type="uniqueidentifier" />
+    <Property Name="FoodID" Type="uniqueidentifier" />
+    <Property Name="FoodName" Type="nvarchar" MaxLength="20" />
+    <Property Name="Price" Type="float" />
+    <Property Name="Num" Type="int" />
+  </EntityType>
+  <EntityType Name="OrderProblem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="OrderID" Type="uniqueidentifier" />
+    <Property Name="OrderCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="ProblemType" Type="nvarchar" MaxLength="20" />
+    <Property Name="Total" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="254" />
+    <Property Name="ShopID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="R_Group_Permission">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupID" Type="int" Nullable="false" />
+    <Property Name="PermissionID" Type="int" Nullable="false" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="BasePermissionID" Type="int" Nullable="false" />
+    <Property Name="BasePermissionGroupID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="R_Group_Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupID" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="BaseRoleID" Type="int" Nullable="false" />
+    <Property Name="BasePermissionID" Type="int" Nullable="false" />
+    <Property Name="BasePermissionGroupID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="R_Group_User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="BaseUserID" Type="int" Nullable="false" />
+    <Property Name="BasePermissionGroupID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="R_Role_Permission">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="PermissionID" Type="int" Nullable="false" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="R_User_Permission">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="PermissionID" Type="int" Nullable="false" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="R_User_Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateBy" Type="nvarchar(max)" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6013: 表/视图“WaiMaiDB.dbo.RuleInfo”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="RuleInfo">
+          <Property Name="Column_1" Type="nvarchar" MaxLength="20" />
+        </EntityType>-->
+  <EntityType Name="Shop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="254" />
+    <Property Name="Address" Type="nvarchar" MaxLength="254" />
+    <Property Name="Linker" Type="nvarchar" MaxLength="10" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="254" />
+  </EntityType>
+  <EntityType Name="Sys_DicInfo">
+    <Key>
+      <PropertyRef Name="Category" />
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Category" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" MaxLength="20" />
+    <Property Name="PIndex" Type="int" />
+    <Property Name="Enable" Type="bit" />
+  </EntityType>
+  <Association Name="FK__R_Group_P__BaseP__182C9B23">
+    <End Role="BasePermission" Type="Self.BasePermission" Multiplicity="1" />
+    <End Role="R_Group_Permission" Type="Self.R_Group_Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasePermission">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_Group_Permission">
+        <PropertyRef Name="BasePermissionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__R_Group_P__BaseP__1920BF5C">
+    <End Role="BasePermissionGroup" Type="Self.BasePermissionGroup" Multiplicity="1" />
+    <End Role="R_Group_Permission" Type="Self.R_Group_Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasePermissionGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_Group_Permission">
+        <PropertyRef Name="BasePermissionGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__R_Group_R__BaseP__1ED998B2">
+    <End Role="BasePermissionGroup" Type="Self.BasePermissionGroup" Multiplicity="1" />
+    <End Role="R_Group_Role" Type="Self.R_Group_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasePermissionGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_Group_Role">
+        <PropertyRef Name="BasePermissionGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__R_Group_R__BaseR__1DE57479">
+    <End Role="BaseRole" Type="Self.BaseRole" Multiplicity="1" />
+    <End Role="R_Group_Role" Type="Self.R_Group_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaseRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_Group_Role">
+        <PropertyRef Name="BaseRoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__R_Group_U__BaseP__24927208">
+    <End Role="BasePermissionGroup" Type="Self.BasePermissionGroup" Multiplicity="1" />
+    <End Role="R_Group_User" Type="Self.R_Group_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasePermissionGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_Group_User">
+        <PropertyRef Name="BasePermissionGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__R_Group_U__BaseU__239E4DCF">
+    <End Role="BaseUser" Type="Self.BaseUser" Multiplicity="1" />
+    <End Role="R_Group_User" Type="Self.R_Group_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaseUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_Group_User">
+        <PropertyRef Name="BaseUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__R_Role_Pe__Permi__29572725">
+    <End Role="BasePermission" Type="Self.BasePermission" Multiplicity="1" />
+    <End Role="R_Role_Permission" Type="Self.R_Role_Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasePermission">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_Role_Permission">
+        <PropertyRef Name="PermissionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__R_Role_Pe__RoleI__2A4B4B5E">
+    <End Role="BaseRole" Type="Self.BaseRole" Multiplicity="1" />
+    <End Role="R_Role_Permission" Type="Self.R_Role_Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaseRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_Role_Permission">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__R_User_Pe__Permi__300424B4">
+    <End Role="BasePermission" Type="Self.BasePermission" Multiplicity="1" />
+    <End Role="R_User_Permission" Type="Self.R_User_Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BasePermission">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_User_Permission">
+        <PropertyRef Name="PermissionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__R_User_Pe__UserI__2F10007B">
+    <End Role="BaseUser" Type="Self.BaseUser" Multiplicity="1" />
+    <End Role="R_User_Permission" Type="Self.R_User_Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaseUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_User_Permission">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__R_User_Ro__RoleI__34C8D9D1">
+    <End Role="BaseRole" Type="Self.BaseRole" Multiplicity="1" />
+    <End Role="R_User_Role" Type="Self.R_User_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaseRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_User_Role">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__R_User_Ro__UserI__35BCFE0A">
+    <End Role="BaseUser" Type="Self.BaseUser" Multiplicity="1" />
+    <End Role="R_User_Role" Type="Self.R_User_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaseUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="R_User_Role">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ADDRESS_REFERENCE_CUSTOMER">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AREAINFO_REFERENCE_SHOP">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+    <End Role="AreaInfo" Type="Self.AreaInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AreaInfo">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COOKINFO_REFERENCE_SHOP">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+    <End Role="CookInfo" Type="Self.CookInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CookInfo">
+        <PropertyRef Name="ShopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COUPONUS_REFERENCE_CUSTOMER">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="CouponUseInfo" Type="Self.CouponUseInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CouponUseInfo">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COURIERI_REFERENCE_SHOP">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+    <End Role="CourierInfo" Type="Self.CourierInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourierInfo">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOODINFO_REFERENCE_SHOP">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+    <End Role="FoodInfo" Type="Self.FoodInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FoodInfo">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIMITTIM_REFERENCE_SHOP">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+    <End Role="LimitTime" Type="Self.LimitTime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LimitTime">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERDEL_REFERENCE_COURIERI">
+    <End Role="CourierInfo" Type="Self.CourierInfo" Multiplicity="0..1" />
+    <End Role="OrderDelivery" Type="Self.OrderDelivery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourierInfo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDelivery">
+        <PropertyRef Name="CourierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERDEL_REFERENCE_ORDERINF">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="0..1" />
+    <End Role="OrderDelivery" Type="Self.OrderDelivery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDelivery">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERINF_REFERENCE_CUSTOMER">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERINF_REFERENCE_SHOP">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERITE_REFERENCE_ORDERINF">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="0..1" />
+    <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDERPRO_REFERENCE_ORDERINF">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="0..1" />
+    <End Role="OrderProblem" Type="Self.OrderProblem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderProblem">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AreaInfo" EntityType="Self.AreaInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BasePermission" EntityType="Self.BasePermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BasePermissionGroup" EntityType="Self.BasePermissionGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BaseRole" EntityType="Self.BaseRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BaseUser" EntityType="Self.BaseUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CookInfo" EntityType="Self.CookInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CouponUseInfo" EntityType="Self.CouponUseInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CourierInfo" EntityType="Self.CourierInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerMessage" EntityType="Self.CustomerMessage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FoodInfo" EntityType="Self.FoodInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LimitTime" EntityType="Self.LimitTime" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuGroup" EntityType="Self.MenuGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuInfo" EntityType="Self.MenuInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDelivery" EntityType="Self.OrderDelivery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderProblem" EntityType="Self.OrderProblem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_Group_Permission" EntityType="Self.R_Group_Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_Group_Role" EntityType="Self.R_Group_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_Group_User" EntityType="Self.R_Group_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_Role_Permission" EntityType="Self.R_Role_Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_User_Permission" EntityType="Self.R_User_Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="R_User_Role" EntityType="Self.R_User_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sys_DicInfo" EntityType="Self.Sys_DicInfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__R_Group_P__BaseP__182C9B23" Association="Self.FK__R_Group_P__BaseP__182C9B23">
+      <End Role="BasePermission" EntitySet="BasePermission" />
+      <End Role="R_Group_Permission" EntitySet="R_Group_Permission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__R_Group_P__BaseP__1920BF5C" Association="Self.FK__R_Group_P__BaseP__1920BF5C">
+      <End Role="BasePermissionGroup" EntitySet="BasePermissionGroup" />
+      <End Role="R_Group_Permission" EntitySet="R_Group_Permission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__R_Group_R__BaseP__1ED998B2" Association="Self.FK__R_Group_R__BaseP__1ED998B2">
+      <End Role="BasePermissionGroup" EntitySet="BasePermissionGroup" />
+      <End Role="R_Group_Role" EntitySet="R_Group_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK__R_Group_R__BaseR__1DE57479" Association="Self.FK__R_Group_R__BaseR__1DE57479">
+      <End Role="BaseRole" EntitySet="BaseRole" />
+      <End Role="R_Group_Role" EntitySet="R_Group_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK__R_Group_U__BaseP__24927208" Association="Self.FK__R_Group_U__BaseP__24927208">
+      <End Role="BasePermissionGroup" EntitySet="BasePermissionGroup" />
+      <End Role="R_Group_User" EntitySet="R_Group_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__R_Group_U__BaseU__239E4DCF" Association="Self.FK__R_Group_U__BaseU__239E4DCF">
+      <End Role="BaseUser" EntitySet="BaseUser" />
+      <End Role="R_Group_User" EntitySet="R_Group_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__R_Role_Pe__Permi__29572725" Association="Self.FK__R_Role_Pe__Permi__29572725">
+      <End Role="BasePermission" EntitySet="BasePermission" />
+      <End Role="R_Role_Permission" EntitySet="R_Role_Permission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__R_Role_Pe__RoleI__2A4B4B5E" Association="Self.FK__R_Role_Pe__RoleI__2A4B4B5E">
+      <End Role="BaseRole" EntitySet="BaseRole" />
+      <End Role="R_Role_Permission" EntitySet="R_Role_Permission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__R_User_Pe__Permi__300424B4" Association="Self.FK__R_User_Pe__Permi__300424B4">
+      <End Role="BasePermission" EntitySet="BasePermission" />
+      <End Role="R_User_Permission" EntitySet="R_User_Permission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__R_User_Pe__UserI__2F10007B" Association="Self.FK__R_User_Pe__UserI__2F10007B">
+      <End Role="BaseUser" EntitySet="BaseUser" />
+      <End Role="R_User_Permission" EntitySet="R_User_Permission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__R_User_Ro__RoleI__34C8D9D1" Association="Self.FK__R_User_Ro__RoleI__34C8D9D1">
+      <End Role="BaseRole" EntitySet="BaseRole" />
+      <End Role="R_User_Role" EntitySet="R_User_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK__R_User_Ro__UserI__35BCFE0A" Association="Self.FK__R_User_Ro__UserI__35BCFE0A">
+      <End Role="BaseUser" EntitySet="BaseUser" />
+      <End Role="R_User_Role" EntitySet="R_User_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ADDRESS_REFERENCE_CUSTOMER" Association="Self.FK_ADDRESS_REFERENCE_CUSTOMER">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AREAINFO_REFERENCE_SHOP" Association="Self.FK_AREAINFO_REFERENCE_SHOP">
+      <End Role="Shop" EntitySet="Shop" />
+      <End Role="AreaInfo" EntitySet="AreaInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COOKINFO_REFERENCE_SHOP" Association="Self.FK_COOKINFO_REFERENCE_SHOP">
+      <End Role="Shop" EntitySet="Shop" />
+      <End Role="CookInfo" EntitySet="CookInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COUPONUS_REFERENCE_CUSTOMER" Association="Self.FK_COUPONUS_REFERENCE_CUSTOMER">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="CouponUseInfo" EntitySet="CouponUseInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COURIERI_REFERENCE_SHOP" Association="Self.FK_COURIERI_REFERENCE_SHOP">
+      <End Role="Shop" EntitySet="Shop" />
+      <End Role="CourierInfo" EntitySet="CourierInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOODINFO_REFERENCE_SHOP" Association="Self.FK_FOODINFO_REFERENCE_SHOP">
+      <End Role="Shop" EntitySet="Shop" />
+      <End Role="FoodInfo" EntitySet="FoodInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIMITTIM_REFERENCE_SHOP" Association="Self.FK_LIMITTIM_REFERENCE_SHOP">
+      <End Role="Shop" EntitySet="Shop" />
+      <End Role="LimitTime" EntitySet="LimitTime" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERDEL_REFERENCE_COURIERI" Association="Self.FK_ORDERDEL_REFERENCE_COURIERI">
+      <End Role="CourierInfo" EntitySet="CourierInfo" />
+      <End Role="OrderDelivery" EntitySet="OrderDelivery" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERDEL_REFERENCE_ORDERINF" Association="Self.FK_ORDERDEL_REFERENCE_ORDERINF">
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+      <End Role="OrderDelivery" EntitySet="OrderDelivery" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERINF_REFERENCE_CUSTOMER" Association="Self.FK_ORDERINF_REFERENCE_CUSTOMER">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERINF_REFERENCE_SHOP" Association="Self.FK_ORDERINF_REFERENCE_SHOP">
+      <End Role="Shop" EntitySet="Shop" />
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERITE_REFERENCE_ORDERINF" Association="Self.FK_ORDERITE_REFERENCE_ORDERINF">
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+      <End Role="OrderItem" EntitySet="OrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERPRO_REFERENCE_ORDERINF" Association="Self.FK_ORDERPRO_REFERENCE_ORDERINF">
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+      <End Role="OrderProblem" EntitySet="OrderProblem" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -16,15 +16,9 @@ namespace WaiMai.Model
     {
         public BasePermissionGroup()
         {
-            this.GroupType = 1;
-            this.AllowEdit = 1;
-            this.AllowDelete = 1;
-            this.IsVisible = 1;
-            this.DeletionStateCode = 0;
-            this.Enabled = 1;
             this.R_Group_Permission = new HashSet<R_Group_Permission>();
-            this.R_Group_User = new HashSet<R_Group_User>();
             this.R_Group_Role = new HashSet<R_Group_Role>();
+            this.R_Group_User = new HashSet<R_Group_User>();
         }
     
         public int ID { get; set; }
@@ -45,7 +39,7 @@ namespace WaiMai.Model
         public string Description { get; set; }
     
         public virtual ICollection<R_Group_Permission> R_Group_Permission { get; set; }
-        public virtual ICollection<R_Group_User> R_Group_User { get; set; }
         public virtual ICollection<R_Group_Role> R_Group_Role { get; set; }
+        public virtual ICollection<R_Group_User> R_Group_User { get; set; }
     }
 }

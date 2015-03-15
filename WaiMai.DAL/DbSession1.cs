@@ -16,7 +16,15 @@ namespace WaiMai.DAL
 
 
 	//在这里需要一个for循环来遍历数据库中所有的表放置在下面即可，这样就实现了所有的表对应的仓储显示出来了。
-	        public IDAL.IBasePermissionRepository BasePermissionRepository
+	        public IDAL.IAddressRepository AddressRepository
+        {
+            get { return new AddressRepository(); }
+        }
+		        public IDAL.IAreaInfoRepository AreaInfoRepository
+        {
+            get { return new AreaInfoRepository(); }
+        }
+		        public IDAL.IBasePermissionRepository BasePermissionRepository
         {
             get { return new BasePermissionRepository(); }
         }
@@ -36,6 +44,30 @@ namespace WaiMai.DAL
         {
             get { return new CookInfoRepository(); }
         }
+		        public IDAL.ICouponUseInfoRepository CouponUseInfoRepository
+        {
+            get { return new CouponUseInfoRepository(); }
+        }
+		        public IDAL.ICourierInfoRepository CourierInfoRepository
+        {
+            get { return new CourierInfoRepository(); }
+        }
+		        public IDAL.ICustomerRepository CustomerRepository
+        {
+            get { return new CustomerRepository(); }
+        }
+		        public IDAL.ICustomerMessageRepository CustomerMessageRepository
+        {
+            get { return new CustomerMessageRepository(); }
+        }
+		        public IDAL.IFoodInfoRepository FoodInfoRepository
+        {
+            get { return new FoodInfoRepository(); }
+        }
+		        public IDAL.ILimitTimeRepository LimitTimeRepository
+        {
+            get { return new LimitTimeRepository(); }
+        }
 		        public IDAL.IMenuGroupRepository MenuGroupRepository
         {
             get { return new MenuGroupRepository(); }
@@ -43,6 +75,22 @@ namespace WaiMai.DAL
 		        public IDAL.IMenuInfoRepository MenuInfoRepository
         {
             get { return new MenuInfoRepository(); }
+        }
+		        public IDAL.IOrderDeliveryRepository OrderDeliveryRepository
+        {
+            get { return new OrderDeliveryRepository(); }
+        }
+		        public IDAL.IOrderInfoRepository OrderInfoRepository
+        {
+            get { return new OrderInfoRepository(); }
+        }
+		        public IDAL.IOrderItemRepository OrderItemRepository
+        {
+            get { return new OrderItemRepository(); }
+        }
+		        public IDAL.IOrderProblemRepository OrderProblemRepository
+        {
+            get { return new OrderProblemRepository(); }
         }
 		        public IDAL.IR_Group_PermissionRepository R_Group_PermissionRepository
         {
@@ -71,6 +119,10 @@ namespace WaiMai.DAL
 		        public IDAL.IShopRepository ShopRepository
         {
             get { return new ShopRepository(); }
+        }
+		        public IDAL.ISys_DicInfoRepository Sys_DicInfoRepository
+        {
+            get { return new Sys_DicInfoRepository(); }
         }
 		}
 }

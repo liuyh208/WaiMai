@@ -4,34 +4,70 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="49fb5bba973c4ea7b5ab3c2fe389af98" Name="关系图1" ZoomLevel="56" >
-        <EntityTypeShape EntityType="DataModel.BaseUser" Width="2" PointX="0.5" PointY="0.5" FillColor="Red" />
-        <EntityTypeShape EntityType="DataModel.R_User_Role" Width="1.75" PointX="3" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.BaseRole" Width="1.75" PointX="9.25" PointY="5.625" FillColor="Red" />
+      <Diagram DiagramId="49fb5bba973c4ea7b5ab3c2fe389af98" Name="关系图1" ZoomLevel="47" >
         <AssociationConnector Association="DataModel.UserInfoR_UserInfo_Role" />
         <AssociationConnector Association="DataModel.RoleR_UserInfo_Role" />
-        <EntityTypeShape EntityType="DataModel.BasePermission" Width="1.625" PointX="7.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.R_User_Permission" Width="1.75" PointX="3.375" PointY="1.625" FillColor="255, 128, 128" />
         <AssociationConnector Association="DataModel.UserInfoR_UserInfo_ActionInfo" />
         <AssociationConnector Association="DataModel.R_UserInfo_ActionInfoActionInfo" />
-        <EntityTypeShape EntityType="DataModel.R_Role_Permission" Width="1.875" PointX="5" PointY="4.875" />
         <AssociationConnector Association="DataModel.BaseRoleR_Role_Permission" />
         <AssociationConnector Association="DataModel.BasePermissionR_Role_Permission" />
-        <EntityTypeShape EntityType="DataModel.BasePermissionGroup" Width="1.5" PointX="11.125" PointY="0.5" />
-        <EntityTypeShape EntityType="DataModel.R_Group_Permission" Width="1.5" PointX="9.25" PointY="0.875" />
         <AssociationConnector Association="DataModel.BasePermissionR_Group_Permission" />
         <AssociationConnector Association="DataModel.BasePermissionGroupR_Group_Permission" />
-        <EntityTypeShape EntityType="DataModel.R_Group_User" Width="1.5" PointX="5.25" PointY="0.5" />
         <AssociationConnector Association="DataModel.BaseUserR_Group_User" />
         <AssociationConnector Association="DataModel.BasePermissionGroupR_Group_User" />
-        <EntityTypeShape EntityType="DataModel.R_Group_Role" Width="1.5" PointX="11.25" PointY="6" />
         <AssociationConnector Association="DataModel.BaseRoleR_Group_Role" />
         <AssociationConnector Association="DataModel.BasePermissionGroupR_Group_Role" />
-        <EntityTypeShape EntityType="DataModel.MenuGroup" Width="1.5" PointX="6.125" PointY="9.25" />
-        <EntityTypeShape EntityType="DataModel.MenuInfo" Width="1.5" PointX="3.625" PointY="9" />
-        <EntityTypeShape EntityType="DataModel.CookInfo" Width="1.5" PointX="0.75" PointY="11.75" />
-        <EntityTypeShape EntityType="DataModel.Shop" Width="1.5" PointX="8.375" PointY="11.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="DataModel.Address" Width="1.5" PointX="8" PointY="14" />
+        <EntityTypeShape EntityType="DataModel.AreaInfo" Width="1.5" PointX="4" PointY="15.75" />
+        <EntityTypeShape EntityType="DataModel.BasePermission" Width="1.5" PointX="36.875" PointY="17.5" />
+        <EntityTypeShape EntityType="DataModel.BasePermissionGroup" Width="1.5" PointX="27.25" PointY="6.125" />
+        <EntityTypeShape EntityType="DataModel.BaseRole" Width="1.5" PointX="27.25" PointY="20.25" />
+        <EntityTypeShape EntityType="DataModel.BaseUser" Width="1.5" PointX="32.25" PointY="8.375" />
+        <EntityTypeShape EntityType="DataModel.CookInfo" Width="1.5" PointX="0.5" PointY="12.5" />
+        <EntityTypeShape EntityType="DataModel.CouponUseInfo" Width="1.5" PointX="11.125" PointY="18.75" />
+        <EntityTypeShape EntityType="DataModel.CourierInfo" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DataModel.Customer" Width="1.5" PointX="11.25" PointY="14.125" />
+        <EntityTypeShape EntityType="DataModel.CustomerMessage" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.LimitTime" Width="1.5" PointX="1.75" PointY="9.625" />
+        <EntityTypeShape EntityType="DataModel.MenuGroup" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.MenuInfo" Width="1.5" PointX="19.25" PointY="1.875" />
+        <EntityTypeShape EntityType="DataModel.OrderDelivery" Width="1.5" PointX="14.75" PointY="8.375" />
+        <EntityTypeShape EntityType="DataModel.OrderInfo" Width="1.5" PointX="13.625" PointY="14.125" />
+        <EntityTypeShape EntityType="DataModel.OrderItem" Width="1.5" PointX="16.75" PointY="17.625" />
+        <EntityTypeShape EntityType="DataModel.OrderProblem" Width="1.5" PointX="16.25" PointY="13" />
+        <EntityTypeShape EntityType="DataModel.R_Group_Permission" Width="1.5" PointX="35.625" PointY="7" />
+        <EntityTypeShape EntityType="DataModel.R_Group_Role" Width="1.5" PointX="27.25" PointY="15.125" />
+        <EntityTypeShape EntityType="DataModel.R_Group_User" Width="1.5" PointX="29.5" PointY="8.375" />
+        <EntityTypeShape EntityType="DataModel.R_Role_Permission" Width="1.5" PointX="36.875" PointY="23.75" />
+        <EntityTypeShape EntityType="DataModel.R_User_Permission" Width="1.5" PointX="34.5" PointY="14.25" />
+        <EntityTypeShape EntityType="DataModel.R_User_Role" Width="1.5" PointX="33.75" PointY="20" />
+        <EntityTypeShape EntityType="DataModel.Shop" Width="1.5" PointX="4.75" PointY="11.125" />
+        <EntityTypeShape EntityType="DataModel.Sys_DicInfo" Width="1.5" PointX="25.375" PointY="3.875" />
+        <AssociationConnector Association="DataModel.FK_ADDRESS_REFERENCE_CUSTOMER" />
+        <AssociationConnector Association="DataModel.FK_AREAINFO_REFERENCE_SHOP" />
+        <AssociationConnector Association="DataModel.FK__R_Group_P__BaseP__182C9B23" />
+        <AssociationConnector Association="DataModel.FK__R_Role_Pe__Permi__29572725" />
+        <AssociationConnector Association="DataModel.FK__R_User_Pe__Permi__300424B4" />
+        <AssociationConnector Association="DataModel.FK__R_Group_P__BaseP__1920BF5C" />
+        <AssociationConnector Association="DataModel.FK__R_Group_R__BaseP__1ED998B2" />
+        <AssociationConnector Association="DataModel.FK__R_Group_U__BaseP__24927208" />
+        <AssociationConnector Association="DataModel.FK__R_Group_R__BaseR__1DE57479" />
+        <AssociationConnector Association="DataModel.FK__R_Role_Pe__RoleI__2A4B4B5E" />
+        <AssociationConnector Association="DataModel.FK__R_User_Ro__RoleI__34C8D9D1" />
+        <AssociationConnector Association="DataModel.FK__R_Group_U__BaseU__239E4DCF" />
+        <AssociationConnector Association="DataModel.FK__R_User_Pe__UserI__2F10007B" />
+        <AssociationConnector Association="DataModel.FK__R_User_Ro__UserI__35BCFE0A" />
+        <AssociationConnector Association="DataModel.FK_COOKINFO_REFERENCE_SHOP" />
+        <AssociationConnector Association="DataModel.FK_COUPONUS_REFERENCE_CUSTOMER" />
+        <AssociationConnector Association="DataModel.FK_COURIERI_REFERENCE_SHOP" />
+        <AssociationConnector Association="DataModel.FK_ORDERDEL_REFERENCE_COURIERI" />
+        <AssociationConnector Association="DataModel.FK_ORDERINF_REFERENCE_CUSTOMER" />
+        <AssociationConnector Association="DataModel.FK_LIMITTIM_REFERENCE_SHOP" />
+        <AssociationConnector Association="DataModel.FK_ORDERDEL_REFERENCE_ORDERINF" />
+        <AssociationConnector Association="DataModel.FK_ORDERINF_REFERENCE_SHOP" />
+        <AssociationConnector Association="DataModel.FK_ORDERITE_REFERENCE_ORDERINF" />
+        <AssociationConnector Association="DataModel.FK_ORDERPRO_REFERENCE_ORDERINF" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

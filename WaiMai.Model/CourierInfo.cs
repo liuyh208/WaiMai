@@ -12,18 +12,24 @@ namespace WaiMai.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class CookInfo
+    public partial class CourierInfo
     {
-        public System.Guid Id { get; set; }
+        public CourierInfo()
+        {
+            this.OrderDelivery = new HashSet<OrderDelivery>();
+        }
+    
+        public System.Guid ID { get; set; }
         public string Name { get; set; }
-        public Nullable<bool> Sex { get; set; }
+        public Nullable<System.Guid> ShopID { get; set; }
+        public string ImagePath { get; set; }
         public string Telephone { get; set; }
-        public Nullable<System.DateTime> Birthday { get; set; }
-        public string Address { get; set; }
-        public string merit { get; set; }
+        public string BarCode { get; set; }
+        public Nullable<bool> Enable { get; set; }
+        public Nullable<bool> IsSecond { get; set; }
         public string Remarks { get; set; }
-        public Nullable<System.Guid> ShopId { get; set; }
     
         public virtual Shop Shop { get; set; }
+        public virtual ICollection<OrderDelivery> OrderDelivery { get; set; }
     }
 }

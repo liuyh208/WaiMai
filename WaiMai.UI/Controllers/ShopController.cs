@@ -18,6 +18,8 @@ namespace WaiMai.UI.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Key = "Shop";
+            ViewBag.Controller = "Shop";
             return View();
         }
 

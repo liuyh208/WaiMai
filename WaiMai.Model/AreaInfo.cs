@@ -12,17 +12,16 @@ namespace WaiMai.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class CookInfo
+    public partial class AreaInfo
     {
-        public System.Guid Id { get; set; }
+        public System.Guid ID { get; set; }
+        public string City { get; set; }
+        public Nullable<int> PIndex { get; set; }
+        public string BlongTo { get; set; }
         public string Name { get; set; }
-        public Nullable<bool> Sex { get; set; }
-        public string Telephone { get; set; }
-        public Nullable<System.DateTime> Birthday { get; set; }
-        public string Address { get; set; }
-        public string merit { get; set; }
-        public string Remarks { get; set; }
-        public Nullable<System.Guid> ShopId { get; set; }
+        public Nullable<System.Guid> ShopID { get; set; }
+        public Nullable<bool> Enable { get; set; }
+        public Nullable<int> TimeLimit { get; set; }
     
         public virtual Shop Shop { get; set; }
     }

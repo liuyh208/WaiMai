@@ -24,7 +24,7 @@ namespace WaiMai.Model
         public string ModifiedUserID { get; set; }
         public string ModifiedBy { get; set; }
     
-        public virtual BaseRole BaseRole { get; set; }
         public virtual BasePermission BasePermission { get; set; }
+        public virtual BaseRole BaseRole { get; set; }
     }
 }

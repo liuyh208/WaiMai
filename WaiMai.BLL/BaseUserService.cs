@@ -168,7 +168,7 @@ namespace WaiMai.BLL
                 return false;
             }
             //首先获取到角色表中的所有信息返回
-            var listRoles = currentUserInfo.R_UserInfo_Role.ToList();
+            var listRoles = currentUserInfo.R_User_Role.ToList();
             foreach (var t in listRoles)
             {
                 _DbSession.R_User_RoleRepository.DeleteEntity(t);

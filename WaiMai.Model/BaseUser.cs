@@ -16,14 +16,9 @@ namespace WaiMai.Model
     {
         public BaseUser()
         {
-            this.SecurityLevel = 9;
-            this.IsStaff = 1;
-            this.IsVisible = 1;
-            this.Enabled = 1;
-            this.AuditStatus = "已审核";
-            this.R_UserInfo_Role = new HashSet<R_User_Role>();
-            this.R_UserInfo_ActionInfo = new HashSet<R_User_Permission>();
             this.R_Group_User = new HashSet<R_Group_User>();
+            this.R_User_Permission = new HashSet<R_User_Permission>();
+            this.R_User_Role = new HashSet<R_User_Role>();
         }
     
         public int ID { get; set; }
@@ -72,8 +67,8 @@ namespace WaiMai.Model
         public string ModifiedBy { get; set; }
         public Nullable<System.Guid> ShopID { get; set; }
     
-        public virtual ICollection<R_User_Role> R_UserInfo_Role { get; set; }
-        public virtual ICollection<R_User_Permission> R_UserInfo_ActionInfo { get; set; }
         public virtual ICollection<R_Group_User> R_Group_User { get; set; }
+        public virtual ICollection<R_User_Permission> R_User_Permission { get; set; }
+        public virtual ICollection<R_User_Role> R_User_Role { get; set; }
     }
 }

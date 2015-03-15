@@ -16,14 +16,9 @@ namespace WaiMai.Model
     {
         public BaseRole()
         {
-            this.CategoryCode = 0;
-            this.AllowEdit = 1;
-            this.AllowDelete = 1;
-            this.IsVisible = 1;
-            this.DeletionStateCode = 0;
-            this.R_UserInfo_Role = new HashSet<R_User_Role>();
-            this.R_Role_Permission = new HashSet<R_Role_Permission>();
             this.R_Group_Role = new HashSet<R_Group_Role>();
+            this.R_Role_Permission = new HashSet<R_Role_Permission>();
+            this.R_User_Role = new HashSet<R_User_Role>();
         }
     
         public int ID { get; set; }
@@ -45,8 +40,8 @@ namespace WaiMai.Model
         public string ModifiedUserID { get; set; }
         public string ModifiedBy { get; set; }
     
-        public virtual ICollection<R_User_Role> R_UserInfo_Role { get; set; }
-        public virtual ICollection<R_Role_Permission> R_Role_Permission { get; set; }
         public virtual ICollection<R_Group_Role> R_Group_Role { get; set; }
+        public virtual ICollection<R_Role_Permission> R_Role_Permission { get; set; }
+        public virtual ICollection<R_User_Role> R_User_Role { get; set; }
     }
 }
