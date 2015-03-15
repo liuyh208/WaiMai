@@ -19,9 +19,9 @@ namespace WaiMai.Model
             this.AreaInfo = new HashSet<AreaInfo>();
             this.CookInfo = new HashSet<CookInfo>();
             this.CourierInfo = new HashSet<CourierInfo>();
-            this.FoodInfo = new HashSet<FoodInfo>();
             this.LimitTime = new HashSet<LimitTime>();
             this.OrderInfo = new HashSet<OrderInfo>();
+            this.FoodInfo = new HashSet<FoodInfo>();
         }
     
         public System.Guid Id { get; set; }
@@ -34,8 +34,8 @@ namespace WaiMai.Model
         public virtual ICollection<AreaInfo> AreaInfo { get; set; }
         public virtual ICollection<CookInfo> CookInfo { get; set; }
         public virtual ICollection<CourierInfo> CourierInfo { get; set; }
-        public virtual ICollection<FoodInfo> FoodInfo { get; set; }
         public virtual ICollection<LimitTime> LimitTime { get; set; }
         public virtual ICollection<OrderInfo> OrderInfo { get; set; }
+        public virtual ICollection<FoodInfo> FoodInfo { get; set; }
     }
 }

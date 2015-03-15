@@ -218,8 +218,8 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="ShopID" Type="uniqueidentifier" />
     <Property Name="Price" Type="float" />
-    <Property Name="CategoryID" Type="uniqueidentifier" />
-    <Property Name="SaleType" Type="uniqueidentifier" />
+    <Property Name="FoodType" Type="varchar" MaxLength="20" />
+    <Property Name="SaleType" Type="varchar" MaxLength="20" />
     <Property Name="SupplyDate" Type="nvarchar" MaxLength="50" />
     <Property Name="IsPreferential" Type="bit" />
     <Property Name="PIndex" Type="int" />
@@ -409,11 +409,6 @@
     <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
     <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
   </EntityType>
-  <!--生成过程中发现错误:
-警告 6013: 表/视图“WaiMaiDB.dbo.RuleInfo”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
-        <EntityType Name="RuleInfo">
-          <Property Name="Column_1" Type="nvarchar" MaxLength="20" />
-        </EntityType>-->
   <EntityType Name="Shop">
     <Key>
       <PropertyRef Name="Id" />

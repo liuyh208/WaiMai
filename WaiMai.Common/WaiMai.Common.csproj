@@ -58,6 +58,17 @@
     <Compile Include="select\PermissionQuery.cs" />
     <Compile Include="select\RoleInfoQuery.cs" />
     <Compile Include="select\UserInfoQuery.cs" />
+    <Compile Include="Specifications\AndAlsoSpecification.cs" />
+    <Compile Include="Specifications\AndNotSpecification.cs" />
+    <Compile Include="Specifications\AndSpecification.cs" />
+    <Compile Include="Specifications\CompositeSpecification.cs" />
+    <Compile Include="Specifications\ExpressionExtensions.cs" />
+    <Compile Include="Specifications\ISpecification.cs" />
+    <Compile Include="Specifications\NotSpecification.cs" />
+    <Compile Include="Specifications\OrElseSpecification.cs" />
+    <Compile Include="Specifications\OrNotSpecification.cs" />
+    <Compile Include="Specifications\OrSpecification.cs" />
+    <Compile Include="Specifications\Specification.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="问题记录\问题记录及解决.txt" />

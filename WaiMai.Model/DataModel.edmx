@@ -223,8 +223,8 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="ShopID" Type="uniqueidentifier" />
           <Property Name="Price" Type="float" />
-          <Property Name="CategoryID" Type="uniqueidentifier" />
-          <Property Name="SaleType" Type="uniqueidentifier" />
+          <Property Name="FoodType" Type="varchar" MaxLength="20" />
+          <Property Name="SaleType" Type="varchar" MaxLength="20" />
           <Property Name="SupplyDate" Type="nvarchar" MaxLength="50" />
           <Property Name="IsPreferential" Type="bit" />
           <Property Name="PIndex" Type="int" />
@@ -414,11 +414,6 @@
           <Property Name="ModifiedUserID" Type="nvarchar" MaxLength="50" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--生成过程中发现错误:
-警告 6013: 表/视图“WaiMaiDB.dbo.RuleInfo”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
-        <EntityType Name="RuleInfo">
-          <Property Name="Column_1" Type="nvarchar" MaxLength="20" />
-        </EntityType>-->
         <EntityType Name="Shop">
           <Key>
             <PropertyRef Name="Id" />
@@ -875,7 +870,6 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="DataModelContainer1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="FoodInfo" EntityType="DataModel.FoodInfo" />
           <EntitySet Name="Address" EntityType="DataModel.Address" />
           <EntitySet Name="AreaInfo" EntityType="DataModel.AreaInfo" />
           <EntitySet Name="BasePermission" EntityType="DataModel.BasePermission" />
@@ -978,10 +972,6 @@
             <End Role="Customer" EntitySet="Customer" />
             <End Role="OrderInfo" EntitySet="OrderInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK_FOODINFO_REFERENCE_SHOP" Association="DataModel.FK_FOODINFO_REFERENCE_SHOP">
-            <End Role="Shop" EntitySet="Shop" />
-            <End Role="FoodInfo" EntitySet="FoodInfo" />
-          </AssociationSet>
           <AssociationSet Name="FK_LIMITTIM_REFERENCE_SHOP" Association="DataModel.FK_LIMITTIM_REFERENCE_SHOP">
             <End Role="Shop" EntitySet="Shop" />
             <End Role="LimitTime" EntitySet="LimitTime" />
@@ -1002,27 +992,12 @@
             <End Role="OrderInfo" EntitySet="OrderInfo" />
             <End Role="OrderProblem" EntitySet="OrderProblem" />
           </AssociationSet>
+          <EntitySet Name="FoodInfo" EntityType="DataModel.FoodInfo" />
+          <AssociationSet Name="FK_FOODINFO_REFERENCE_SHOP" Association="DataModel.FK_FOODINFO_REFERENCE_SHOP">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="FoodInfo" EntitySet="FoodInfo" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="FoodInfo">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ShopID" Type="Guid" />
-          <Property Name="Price" Type="Double" />
-          <Property Name="CategoryID" Type="Guid" />
-          <Property Name="SaleType" Type="Guid" />
-          <Property Name="SupplyDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsPreferential" Type="Boolean" />
-          <Property Name="PIndex" Type="Int32" />
-          <Property Name="Enable" Type="Boolean" />
-          <Property Name="Visible" Type="Boolean" />
-          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Remarks1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Shop" Relationship="DataModel.FK_FOODINFO_REFERENCE_SHOP" FromRole="FoodInfo" ToRole="Shop" />
-        </EntityType>
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="ID" />
@@ -1469,9 +1444,9 @@
           <NavigationProperty Name="AreaInfo" Relationship="DataModel.FK_AREAINFO_REFERENCE_SHOP" FromRole="Shop" ToRole="AreaInfo" />
           <NavigationProperty Name="CookInfo" Relationship="DataModel.FK_COOKINFO_REFERENCE_SHOP" FromRole="Shop" ToRole="CookInfo" />
           <NavigationProperty Name="CourierInfo" Relationship="DataModel.FK_COURIERI_REFERENCE_SHOP" FromRole="Shop" ToRole="CourierInfo" />
-          <NavigationProperty Name="FoodInfo" Relationship="DataModel.FK_FOODINFO_REFERENCE_SHOP" FromRole="Shop" ToRole="FoodInfo" />
           <NavigationProperty Name="LimitTime" Relationship="DataModel.FK_LIMITTIM_REFERENCE_SHOP" FromRole="Shop" ToRole="LimitTime" />
           <NavigationProperty Name="OrderInfo" Relationship="DataModel.FK_ORDERINF_REFERENCE_SHOP" FromRole="Shop" ToRole="OrderInfo" />
+          <NavigationProperty Name="FoodInfo" Relationship="DataModel.FK_FOODINFO_REFERENCE_SHOP" FromRole="Shop" ToRole="FoodInfo" />
         </EntityType>
         <EntityType Name="Sys_DicInfo">
           <Key>
@@ -1712,18 +1687,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FOODINFO_REFERENCE_SHOP">
-          <End Type="DataModel.Shop" Role="Shop" Multiplicity="0..1" />
-          <End Type="DataModel.FoodInfo" Role="FoodInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shop">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="FoodInfo">
-              <PropertyRef Name="ShopID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_LIMITTIM_REFERENCE_SHOP">
           <End Type="DataModel.Shop" Role="Shop" Multiplicity="0..1" />
           <End Type="DataModel.LimitTime" Role="LimitTime" Multiplicity="*" />
@@ -1784,32 +1747,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="FoodInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShopID" Type="Guid" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="FoodType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SaleType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SupplyDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsPreferential" Type="Boolean" />
+          <Property Name="PIndex" Type="Int32" />
+          <Property Name="Enable" Type="Boolean" />
+          <Property Name="Visible" Type="Boolean" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Shop" Relationship="DataModel.FK_FOODINFO_REFERENCE_SHOP" FromRole="FoodInfo" ToRole="Shop" />
+        </EntityType>
+        <Association Name="FK_FOODINFO_REFERENCE_SHOP">
+          <End Type="DataModel.Shop" Role="Shop" Multiplicity="0..1" />
+          <End Type="DataModel.FoodInfo" Role="FoodInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FoodInfo">
+              <PropertyRef Name="ShopID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="DataModelContainer1">
-          <EntitySetMapping Name="FoodInfo">
-            <EntityTypeMapping TypeName="DataModel.FoodInfo">
-              <MappingFragment StoreEntitySet="FoodInfo">
-                <ScalarProperty Name="Remarks1" ColumnName="Remarks1" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Visible" ColumnName="Visible" />
-                <ScalarProperty Name="Enable" ColumnName="Enable" />
-                <ScalarProperty Name="PIndex" ColumnName="PIndex" />
-                <ScalarProperty Name="IsPreferential" ColumnName="IsPreferential" />
-                <ScalarProperty Name="SupplyDate" ColumnName="SupplyDate" />
-                <ScalarProperty Name="SaleType" ColumnName="SaleType" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Address">
             <EntityTypeMapping TypeName="DataModel.Address">
               <MappingFragment StoreEntitySet="Address">
@@ -2244,6 +2219,26 @@
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodInfo">
+            <EntityTypeMapping TypeName="DataModel.FoodInfo">
+              <MappingFragment StoreEntitySet="FoodInfo">
+                <ScalarProperty Name="Remarks1" ColumnName="Remarks1" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="PIndex" ColumnName="PIndex" />
+                <ScalarProperty Name="IsPreferential" ColumnName="IsPreferential" />
+                <ScalarProperty Name="SupplyDate" ColumnName="SupplyDate" />
+                <ScalarProperty Name="SaleType" ColumnName="SaleType" />
+                <ScalarProperty Name="FoodType" ColumnName="FoodType" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

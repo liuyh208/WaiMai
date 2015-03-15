@@ -18,8 +18,8 @@ namespace WaiMai.Model
         public string Name { get; set; }
         public Nullable<System.Guid> ShopID { get; set; }
         public Nullable<double> Price { get; set; }
-        public Nullable<System.Guid> CategoryID { get; set; }
-        public Nullable<System.Guid> SaleType { get; set; }
+        public string FoodType { get; set; }
+        public string SaleType { get; set; }
         public string SupplyDate { get; set; }
         public Nullable<bool> IsPreferential { get; set; }
         public Nullable<int> PIndex { get; set; }

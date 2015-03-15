@@ -25,7 +25,6 @@ namespace WaiMai.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<FoodInfo> FoodInfo { get; set; }
         public DbSet<Address> Address { get; set; }
         public DbSet<AreaInfo> AreaInfo { get; set; }
         public DbSet<BasePermission> BasePermission { get; set; }
@@ -52,5 +51,6 @@ namespace WaiMai.Model
         public DbSet<R_User_Role> R_User_Role { get; set; }
         public DbSet<Shop> Shop { get; set; }
         public DbSet<Sys_DicInfo> Sys_DicInfo { get; set; }
+        public DbSet<FoodInfo> FoodInfo { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WaiMai.UI.App_Start;
 
 namespace WaiMai.UI.Portal
 {
@@ -22,6 +23,7 @@ namespace WaiMai.UI.Portal
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            MapperConfig.Register();
         }
     }
 }

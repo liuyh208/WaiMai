@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="49fb5bba973c4ea7b5ab3c2fe389af98" Name="关系图1" ZoomLevel="47" >
+      <Diagram DiagramId="49fb5bba973c4ea7b5ab3c2fe389af98" Name="关系图1" ZoomLevel="54" >
         <AssociationConnector Association="DataModel.UserInfoR_UserInfo_Role" />
         <AssociationConnector Association="DataModel.RoleR_UserInfo_Role" />
         <AssociationConnector Association="DataModel.UserInfoR_UserInfo_ActionInfo" />
@@ -67,6 +67,8 @@
         <AssociationConnector Association="DataModel.FK_ORDERINF_REFERENCE_SHOP" />
         <AssociationConnector Association="DataModel.FK_ORDERITE_REFERENCE_ORDERINF" />
         <AssociationConnector Association="DataModel.FK_ORDERPRO_REFERENCE_ORDERINF" />
+        <EntityTypeShape EntityType="DataModel.FoodInfo" Width="1.5" PointX="7" PointY="8.875" />
+        <AssociationConnector Association="DataModel.FK_FOODINFO_REFERENCE_SHOP" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
