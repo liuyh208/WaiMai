@@ -14,6 +14,11 @@ namespace WaiMai.Model
     
     public partial class Address
     {
+        public Address()
+        {
+            this.OrderInfo = new HashSet<OrderInfo>();
+        }
+    
         public System.Guid ID { get; set; }
         public string City { get; set; }
         public Nullable<System.Guid> CustomerID { get; set; }
@@ -24,5 +29,6 @@ namespace WaiMai.Model
         public Nullable<bool> Enable { get; set; }
     
         public virtual Customer Customer { get; set; }
+        public virtual ICollection<OrderInfo> OrderInfo { get; set; }
     }
 }

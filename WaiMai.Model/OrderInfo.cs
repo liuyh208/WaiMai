@@ -38,11 +38,13 @@ namespace WaiMai.Model
         public Nullable<bool> Valid { get; set; }
         public string Remarks { get; set; }
         public Nullable<bool> Invoice { get; set; }
+        public System.Guid AddressID { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderDelivery> OrderDelivery { get; set; }
         public virtual Shop Shop { get; set; }
         public virtual ICollection<OrderItem> OrderItem { get; set; }
         public virtual ICollection<OrderProblem> OrderProblem { get; set; }
+        public virtual Address Address { get; set; }
     }
 }

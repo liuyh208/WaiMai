@@ -293,6 +293,7 @@
     <Property Name="Valid" Type="bit" />
     <Property Name="Remarks" Type="nvarchar" MaxLength="254" />
     <Property Name="Invoice" Type="bit" />
+    <Property Name="AddressID" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="OrderItem">
     <Key>
@@ -683,6 +684,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ORDERINF_REFERENCE_ADDRESS">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ORDERINF_REFERENCE_CUSTOMER">
     <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
@@ -842,6 +855,10 @@
     <AssociationSet Name="FK_ORDERDEL_REFERENCE_ORDERINF" Association="Self.FK_ORDERDEL_REFERENCE_ORDERINF">
       <End Role="OrderInfo" EntitySet="OrderInfo" />
       <End Role="OrderDelivery" EntitySet="OrderDelivery" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDERINF_REFERENCE_ADDRESS" Association="Self.FK_ORDERINF_REFERENCE_ADDRESS">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
     </AssociationSet>
     <AssociationSet Name="FK_ORDERINF_REFERENCE_CUSTOMER" Association="Self.FK_ORDERINF_REFERENCE_CUSTOMER">
       <End Role="Customer" EntitySet="Customer" />

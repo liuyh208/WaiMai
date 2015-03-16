@@ -298,6 +298,7 @@
           <Property Name="Valid" Type="bit" />
           <Property Name="Remarks" Type="nvarchar" MaxLength="254" />
           <Property Name="Invoice" Type="bit" />
+          <Property Name="AddressID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -688,6 +689,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ORDERINF_REFERENCE_ADDRESS">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderInfo">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ORDERINF_REFERENCE_CUSTOMER">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
@@ -848,6 +861,10 @@
             <End Role="OrderInfo" EntitySet="OrderInfo" />
             <End Role="OrderDelivery" EntitySet="OrderDelivery" />
           </AssociationSet>
+          <AssociationSet Name="FK_ORDERINF_REFERENCE_ADDRESS" Association="Self.FK_ORDERINF_REFERENCE_ADDRESS">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="OrderInfo" EntitySet="OrderInfo" />
+          </AssociationSet>
           <AssociationSet Name="FK_ORDERINF_REFERENCE_CUSTOMER" Association="Self.FK_ORDERINF_REFERENCE_CUSTOMER">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="OrderInfo" EntitySet="OrderInfo" />
@@ -997,6 +1014,10 @@
             <End Role="Shop" EntitySet="Shop" />
             <End Role="FoodInfo" EntitySet="FoodInfo" />
           </AssociationSet>
+          <AssociationSet Name="FK_ORDERINF_REFERENCE_ADDRESS" Association="DataModel.FK_ORDERINF_REFERENCE_ADDRESS">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="OrderInfo" EntitySet="OrderInfo" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Address">
           <Key>
@@ -1011,6 +1032,7 @@
           <Property Name="IsDefault" Type="Boolean" />
           <Property Name="Enable" Type="Boolean" />
           <NavigationProperty Name="Customer" Relationship="DataModel.FK_ADDRESS_REFERENCE_CUSTOMER" FromRole="Address" ToRole="Customer" />
+          <NavigationProperty Name="OrderInfo" Relationship="DataModel.FK_ORDERINF_REFERENCE_ADDRESS" FromRole="Address" ToRole="OrderInfo" />
         </EntityType>
         <EntityType Name="AreaInfo">
           <Key>
@@ -1301,6 +1323,8 @@
           <NavigationProperty Name="Shop" Relationship="DataModel.FK_ORDERINF_REFERENCE_SHOP" FromRole="OrderInfo" ToRole="Shop" />
           <NavigationProperty Name="OrderItem" Relationship="DataModel.FK_ORDERITE_REFERENCE_ORDERINF" FromRole="OrderInfo" ToRole="OrderItem" />
           <NavigationProperty Name="OrderProblem" Relationship="DataModel.FK_ORDERPRO_REFERENCE_ORDERINF" FromRole="OrderInfo" ToRole="OrderProblem" />
+          <Property Name="AddressID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="DataModel.FK_ORDERINF_REFERENCE_ADDRESS" FromRole="OrderInfo" ToRole="Address" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -1779,6 +1803,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ORDERINF_REFERENCE_ADDRESS">
+          <End Type="DataModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="DataModel.OrderInfo" Role="OrderInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderInfo">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2056,6 +2092,7 @@
           <EntitySetMapping Name="OrderInfo">
             <EntityTypeMapping TypeName="DataModel.OrderInfo">
               <MappingFragment StoreEntitySet="OrderInfo">
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
                 <ScalarProperty Name="Invoice" ColumnName="Invoice" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="Valid" ColumnName="Valid" />

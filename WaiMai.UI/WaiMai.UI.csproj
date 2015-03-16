@@ -146,7 +146,7 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\OrderManagerController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
@@ -160,6 +160,8 @@
     <Compile Include="Models\CourierDto.cs" />
     <Compile Include="Models\FoodDto.cs" />
     <Compile Include="Models\MenuDto.cs" />
+    <Compile Include="Models\OrderDetailDto.cs" />
+    <Compile Include="Models\OrderDto.cs" />
     <Compile Include="Models\ShopDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -580,7 +582,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\images\Thumbs.db" />
+    <Content Include="Images\bg.gif" />
     <Content Include="Images\logo.jpg" />
+    <Content Include="Images\top_bar.gif" />
     <Content Include="Welcome.html" />
     <None Include="Properties\PublishProfiles\Debug.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -620,12 +624,12 @@
     <Content Include="Views\UserInfo\SetRole.cshtml" />
     <Content Include="Views\Home\Menus.cshtml" />
     <Content Include="Views\UserInfo\Index2.cshtml" />
-    <Content Include="Views\OrderManager\Start.cshtml" />
     <Content Include="Views\Cook\Index.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Food\Index.cshtml" />
     <Content Include="Views\Area\Index.cshtml" />
     <Content Include="Views\Courier\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

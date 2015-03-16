@@ -69,6 +69,7 @@
         <AssociationConnector Association="DataModel.FK_ORDERPRO_REFERENCE_ORDERINF" />
         <EntityTypeShape EntityType="DataModel.FoodInfo" Width="1.5" PointX="7" PointY="8.875" />
         <AssociationConnector Association="DataModel.FK_FOODINFO_REFERENCE_SHOP" />
+        <AssociationConnector Association="DataModel.FK_ORDERINF_REFERENCE_ADDRESS" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

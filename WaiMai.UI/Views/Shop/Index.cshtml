@@ -220,15 +220,15 @@
 </script>
 
 <!-----------------------EasyUI的DataGird控件的放置----------------------->
-<div class="easyui-panel" data-options="fit:true,collapsible:false,border:false">
-    
+<div class="easyui-panel" data-options="fit:true,collapsible:false,border:false" style="padding:0px 1px 28px;">
+
     @*<fieldset>
-    <legend>店铺详细信息模糊搜索</legend>*@
-        <div>
-            <label for="txtShopName">店铺名称：</label>
-            <input type="text" id="txtShopName" />&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch_@ViewBag.Key">模糊搜索</a>
-        </div>
+        <legend>店铺详细信息模糊搜索</legend>*@
+    <div>
+        <label for="txtShopName">店铺名称：</label>
+        <input type="text" id="txtShopName" />&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch_@ViewBag.Key">模糊搜索</a>
+    </div>
     @*</fieldset>*@
 
     <table id="tb_@ViewBag.Key"></table>
