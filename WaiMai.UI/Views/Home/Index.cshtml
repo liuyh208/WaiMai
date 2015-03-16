@@ -83,14 +83,7 @@
             });
         }
 
-        function doddd() {
-            @foreach (string s in Model)
-            {
-                
-            }
-            var n="@ViewBag.List";
-            alert(n);
-        }
+        
     </script>
 </head>
 <body class="easyui-layout">
@@ -111,7 +104,7 @@
                 <td style="width: auto;"></td>
                 <td id="tdlogin" style="text-align: right; width: 100px;"><b>欢迎你 @ViewBag.UserName</b></td>
 
-                <td id="tdExit" style="text-align: center; width: 50px;"><a onclick="doddd();" class="easyui-linkbutton" data-options="plain:true"><i class="fa fa-power-off fa-2x"></i></a> </td>
+                <td id="tdExit" style="text-align: center; width: 50px;"><a class="easyui-linkbutton" data-options="plain:true"><i class="fa fa-power-off fa-2x"></i></a> </td>
                 <td style="width: 30px;"></td>
             </tr>
         </table>
@@ -131,7 +124,7 @@
     @*--------------------------------------网站结束（Left）--------------------------------------*@
 
     @*--------------------------------------网站中间部分开始（Center） 面包屑--------------------------------------*@
-    <div data-options="region:'center'" style="overflow: hidden;">
+    <div data-options="region:'center'">
         <div id="worktab" class="easyui-tabs" fit="true" border="false">
             <div title="外卖订单管理系统1" data-options="cache:false">
                 <iframe id="frmWorkArea" width="100%" height="100%" frameborder="0" scrolling="yes" src="~/Welcome.html"></iframe>

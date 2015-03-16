@@ -16,6 +16,7 @@ namespace WaiMai.UI.App_Start
 
            AutoMapper.Mapper.CreateMap<AreaInfo, AreaDto>();
            AutoMapper.Mapper.CreateMap<Shop, ShopDto>();
+            AutoMapper.Mapper.CreateMap<CourierInfo, CourierDto>();
         }
     }
 }
